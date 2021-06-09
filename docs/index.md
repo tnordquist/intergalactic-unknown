@@ -4,15 +4,23 @@ It is my goal to create an android application that serves as a game for its use
 
 ## Intended users
 
-Its my goal to make my intended user base versatile in hopes I can reach a large market of users. Some people play games as a disconnect from their professional work and may not be interested in a challenge. This user will be happy with the content alone without intense decisionmaking. Other users may use a game to stimulate themselves mentally and require a challenge to find value in what they are doing. 
+It's my goal to make my intended user base versatile in hopes I can reach a large market of users. 
+One user "The Busy Business Professional" will play games as a disconnect from their work and may not
+be interested in a challenge. This user will be happy with the content alone without intense decisionmaking.
+Other users, whom I will call "The Gaming Hobbyist" will use this game to stimulate themselves mentally and require a challenge to find value in
+what they are doing. Lastly, we have the "Sci-Fi Hobbyist", this person will share one of the two traits as the previous two individuals.
+They will also naturally be fans of the Sci-Fi Genre. 
 
-> As a casual player, I want to access all the content of the game easily, so that I may decompress from my other projects.
+> As The Busy Business Professional, I want to access all the content of the game easily, so that I may decompress from my other projects.
 
-> As a competitive player, I want my access to the content limited unless I work within the intended constraints of the games design, so that I may find value in my time spent.
+> As The Gaming Hobbyist, I want my access to the content limited unless I work within the intended constraints of the games design, so that I may find value in my time spent.
+
+> As The Sci-Fi Hobbyist, I want access to quality Science Fiction material, so that I may occupy myself through abstract creativity.
+
 
 ## Functionality
-+ Phased based gameplay - during each phase the user will need to make a structured series of decisions every time. 
-+ Each phase will start with a resource loss. The parameters of the loss possibilities is relative to what was defined in previous phases. 
++ Phased based gameplay - during each phase the user will need to make a structured series of decisions every time. Each phase will start with a randomized resource loss that is visually prompted to the user, followed by asking them to confirm. The parameters of the resource loss possibilities is relative to what was defined in previous phases by the users decisioning.
++ Decisions made during each phase include but are not limited to: resources to purchase, charting next destination after assessing risk, allies to bring along / release, etc. 
 + Random events may occur which can alter practically anything within reason. 
 + Thematic elements include a story about reaching a destination. 
 + Performance will be graded and measured, providing a leaderboard and encouraging replayability. 
@@ -28,4 +36,4 @@ Photos will be accessible so the player can upload their image into the games pr
 
 ## Stretch goals/possible enhancements 
 
-Potentially adding real time animation between each "phase" to help create more depth in the "why" of the resource loss. The same concept could be used during random events, where an unwelcomed random event occurs and you can possibly avoid it based on a minigame. 
+Adding additional versions where for example unlimited random travel destinations spawn while the difficulties raise.  
