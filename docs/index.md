@@ -11,7 +11,7 @@ Other users, whom I will call "The Gaming Hobbyist" will use this game to stimul
 what they are doing. Lastly, we have the "Sci-Fi Hobbyist", this person will share one of the two traits as the previous two individuals.
 They will also naturally be fans of the Sci-Fi Genre. 
 
-> As The Busy Business Professional, I want to access all the content of the game easily, so that I may decompress from my other projects.
+> As The Busy Professional, I want to access all the content of the game easily, so that I may decompress from my other projects.
 
 > As The Gaming Hobbyist, I want my access to the content limited unless I work within the intended constraints of the games design, so that I may find value in my time spent.
 
@@ -20,8 +20,10 @@ They will also naturally be fans of the Sci-Fi Genre.
 
 ## Functionality
 + Phased based gameplay - during each phase the user will need to make a structured series of decisions every time. Each phase will start with a randomized resource loss that is visually prompted to the user, followed by asking them to confirm. The parameters of the resource loss possibilities is relative to what was defined in previous phases by the users decisioning.
-+ Decisions made during each phase include but are not limited to: resources to purchase, charting next destination after assessing risk, allies to bring along / release, etc. 
-+ Random events may occur which can alter practically anything within reason. 
++ Decisions made during each phase include but are not limited to: what resources to mine, charting next destination after assessing risk, allies to bring along / release, etc.
++ Resources include a powerful new energy supply which you can use or sell called Aether, perishables kit containing food and water, ship maintenance kits.
++ Materials include special items for example a religious relic, a powerful narcotic, antibiotics etc.    
++ Random events may occur which can alter practically anything within reason. Some examples include a black hole, visitations from a space cult, fuel leaks, allies becoming ill.
 + Thematic elements include a story about reaching a destination. 
 + Performance will be graded and measured, providing a leaderboard and encouraging replayability. 
 
