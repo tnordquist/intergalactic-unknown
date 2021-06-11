@@ -25,11 +25,11 @@ I plan to diversify my intended user base in hopes I can reach a large market of
 
 ## Persistent data
 
-* Game save data
-    > Resources
-    > Destination and future routes
-    > Allies
-    > Planets Traveled
++ Game save data
+    * Resources
+    * Destination and future routes
+    * Allies
+    * Planets Traveled
 + Full functionality without internet access is preferred, but that will prove to be true or false in development.
     
 ## Device/external services
