@@ -1,21 +1,17 @@
 ## Summary
 
-It is my goal to create an android application that serves as a game for its user, more specifically a choice based sci-fi survival game. The user will embark on a intergalactic journey where they must balance many variables. Some of these variables will be rational, like food or supplies, where others will be more subjective like relationship building or the lack thereof. My inspiration comes from a love of fiction and more specifically fantasy or science fiction not limited to just literature but also in media of all forms. 
+I want to create an android application that serves as a game for its users, more specifically a choice based sci-fi survival game. The user will embark on an intergalactic journey where they must balance many variables. Some of these variables will be rational, like food or supplies, where others will be more subjective like relationship building or the lack thereof. My inspiration comes from a love of fiction and more specifically fantasy or science fiction not limited to just literature but also in media of all forms. 
 
 ## Intended users
 
-It's my goal to make my intended user base versatile in hopes I can reach a large market of users. 
-One user "The Busy Business Professional" will play games as a disconnect from their work and may not
-be interested in a challenge. This user will be happy with the content alone without intense decisionmaking.
-Other users, whom I will call "The Gaming Hobbyist" will use this game to stimulate themselves mentally and require a challenge to find value in
-what they are doing. Lastly, we have the "Sci-Fi Hobbyist", this person will share one of the two traits as the previous two individuals.
-They will also naturally be fans of the Sci-Fi Genre. 
+I plan to diversify my intended user base in hopes I can reach a large market of users.
 
-> As The Busy Professional, I want to access all the content of the game easily, so that I may decompress from my other projects.
-
-> As The Gaming Hobbyist, I want my access to the content limited unless I work within the intended constraints of the games design, so that I may find value in my time spent.
-
-> As The Sci-Fi Hobbyist, I want access to quality Science Fiction material, so that I may occupy myself through abstract creativity.
+* Business professionals who enjoy games
+    > As a busy professional who uses games to "disconnect" from work during breaks, I want to access all the features of a game easily and directly, so that I don't lose valuable time digging through multiple levels of user interface controls.
+* Hardcore Gamer
+    > As someone who games for the completion milestone, I use games to challenge myself mentally by dealing with arduous decision-making, I want my access to the content limited unless I work within the intended constraints of the games design.
+* Science Fiction Fan
+    > As a Science Fiction fan, I want access to quality Science Fiction material, so that I may occupy myself through abstract and creative world-building.
 
 
 ## Functionality
@@ -29,12 +25,18 @@ They will also naturally be fans of the Sci-Fi Genre.
 
 ## Persistent data
 
-+ Game save data
+* Game save data
+    > Resources
+    > Destination and future routes
+    > Allies
+    > Planets Traveled
 + Full functionality without internet access is preferred, but that will prove to be true or false in development.
     
 ## Device/external services
 
-Photos will be accessible so the player can upload their image into the games profile picture as the "captains photo", the photo can also be listed on the game leaderboards. Contacts can be utilized to invite friends to play and eventually compare the scores amongst one another. I would like to make this device access optional to not discourage application use. 
++ Photos will be accessible so the player can upload their image into the games profile picture as the "captains photo", the photo can also be listed on the game leaderboards. 
+
++ Contacts can be utilized to invite friends to play and eventually compare the scores amongst one another. I would like to make this device access optional to not discourage application use. 
 
 ## Stretch goals/possible enhancements 
 
