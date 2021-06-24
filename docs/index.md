@@ -15,9 +15,9 @@ I plan to diversify my intended user base in hopes I can reach a large market of
 
 
 ## Functionality
-+ Phased based gameplay - during each phase the user will need to make a structured series of decisions every time. Each phase will start with a randomized resource loss that is visually prompted to the user, followed by asking them to confirm. The parameters of the resource loss possibilities is relative to what was defined in previous phases by the users decisioning.
++ Phased based gameplay - during each phase the user will need to make a structured series of decisions every time. Each phase will start with visiting the space station where you make path decisions and build materials, followed by visiting the planets where the user starts losing resources.
 + Decisions made during each phase include but are not limited to: what resources to mine, charting next destination after assessing risk, allies to bring along / release, etc.
-+ Resources include a powerful new energy supply which you can use or sell called Aether, perishables kit containing food and water, ship maintenance kits, runite (more to come on runite).
++ Resources include a powerful new energy supply which you can use or sell called Aether, perishables kit containing food and water, ship maintenance kits.
 + Materials include special items for example a religious relic, a powerful narcotic, antibiotics etc.    
 + Random events may occur which can alter practically anything within reason. Some examples include a black hole, visitations from a space cult, fuel leaks, allies becoming ill.
 + Thematic elements include a story about reaching a destination. 
