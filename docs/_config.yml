@@ -1,4 +1,4 @@
-remote_theme: ddc-java/ddc-day
+theme: jekyll-theme-hacker
 repository_links:
   enabled: true
 page_navigator:
@@ -7,7 +7,7 @@ titles_from_headings:
   enabled: false
 
 # Build settings
-theme: jekyll-theme-hacker
+
 
 
 # Modify the contents below for the specific project.
