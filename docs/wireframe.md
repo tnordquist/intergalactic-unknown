@@ -1,4 +1,5 @@
 ---
+theme: jekyll-theme-hacker
 title: Wireframe Diagram
 subtitle: "Visual UI Representation of Application"
 menu: Wireframe

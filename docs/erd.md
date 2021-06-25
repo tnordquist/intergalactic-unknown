@@ -1,4 +1,5 @@
 ---
+theme: jekyll-theme-hacker
 title: Entity Relationship Diagram
 subtitle: "Relationship diagram between data entities"
 menu: ERD
