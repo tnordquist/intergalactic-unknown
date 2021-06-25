@@ -8,7 +8,7 @@ order: 0
 
 ## Summary
 
-I want to create an android application that serves as a game for its users, more specifically a choice based sci-fi survival game. The user will embark on an intergalactic journey where they must balance many variables. Some of these variables will be rational, like food or supplies, where others will be more subjective like relationship building or the lack thereof. My inspiration comes from a love of fiction and more specifically fantasy or science fiction not limited to just literature but also in media of all forms. 
+Intergalactic Unknown serves as an exciting android game, more specifically a choice based sci-fi survival game. The user will embark on an intergalactic journey where they must balance their ships needs during space travel. My inspiration comes from a love of fiction and more specifically fantasy or science fiction of all types. 
 
 ## Intended users
 
@@ -24,9 +24,9 @@ I plan to diversify my intended user base in hopes I can reach a large market of
 
 ## Functionality
 + Structured stack based gameplay - during each stack the user will need to make a structured series of decisions. Each stack is broken into phases. Each phase will also provide an environment defining photo to compliment the informational text and buttons on the bottom half of the screen. 
-+ The first phase starts with visiting the space station. Here you make planetary pathway decisions where you must decide between two paths of three planets total. Each path only shows limited information, for example you can only see the first two planets and *"hidden"* planets are never visible. At the space station the user may also build materials using their resources stored in their ship.
++ The first phase starts with visiting the space station. Here you make planetary pathway decisions where you must decide between two paths of three planets total. Each path only shows limited information, for example the user may only see the first two planets. There are also *"hidden"* planets that are never visible in the forecast. At the space station the user may also build materials using their resources stored in their ship.
 + Once the user leaves the space station they enter the Space Phase, but don't let the name fool you. The Space Phase can quickly become the Random Event Phase if a random roll of the dice indicates it to take place of the space phase(internal only or visual representation undecided).
-  + The Space Phase simply deducts from the fuel supply and prompts you to proceed to the first planet.
+  + The Space Phase simply deducts from the fuel supply and prompts the user to proceed to the first planet.
   + The Random Event Phase has multiple options (also decided by a dice roll). 
     + Gas Leak (Ship Damage)
     + Space Pirate Theft (Mined Resources,Ship Modifiers, Fuel, Ship Damage)
@@ -45,11 +45,12 @@ I plan to diversify my intended user base in hopes I can reach a large market of
   + The user may view ship status, where they see a list of pertinent information. 
     + Mined Resources
     + Ship Modifiers
-    + Ship Health
-    + Fuel
+    + Ship Health (Max = 3)
+    + Fuel (Max = 6)
   + The user may mine their planet for that planet types resources, however they must do this responsibly as there is a chance their mining tool may become destroyed.
   + Lastly, they may depart to the next space phase where that phase will be followed by the next planet or space station depending on their position in the structured stack of events. (three planets must be visited) 
 + As previously mentioned in the beginning of our functionality description, mined resources are to be spent. The user has a list of options.
+  + Mining Tool (if previously broken during planet phase)
   + Hazard Protection (*planet type listed here*)
     + Radiation Antioxidant (Radiation)
     + Water Recycler (Scorched)
@@ -69,8 +70,7 @@ I plan to diversify my intended user base in hopes I can reach a large market of
 + Game save data
     * Resources
     * Destination and future routes
-    * Allies
-    * Planets Traveled
+    * Planets Traveled / Space Stations Visited
 + Full functionality without internet access is preferred, but that will prove to be true or false in development.
     
 ## Device/external services
