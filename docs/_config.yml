@@ -1,4 +1,4 @@
-remote_theme: jekyll-theme-time-machine
+remote_theme: ddc-java/ddc-day
 repository_links:
   enabled: true
 page_navigator:
