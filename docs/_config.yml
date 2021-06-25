@@ -1,15 +1,15 @@
 remote_theme: ddc-java/ddc-day
 repository_links:
-  enabled: false
+  enabled: true
 page_navigator:
-  enabled: false
+  enabled: true
 titles_from_headings:
   enabled: false
 
 # Modify the contents below for the specific project.
 
 title: "Intergalactic Unknown"
-description: "User embarks on a intergalactic choice based journey, forcing them to manage their supplies while balancing decision making."
+description: "User will embark on a intergalactic choice based journey, forcing them to manage their supplies while balancing decision making."
 author:
   name: "Jonathan Rodrigues"
 
