@@ -5,9 +5,9 @@ page_navigator:
   enabled: true
 titles_from_headings:
   enabled: false
-theme: jekyll-theme-hacker
 
 # Modify the contents below for the specific project.
+theme: jekyll-theme-hacker
 
 title: "Intergalactic Unknown"
 description: "User will embark on a intergalactic choice based journey, forcing them to manage their supplies while balancing decision making."

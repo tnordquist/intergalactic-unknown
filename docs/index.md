@@ -75,8 +75,7 @@ I plan to diversify my intended user base in hopes I can reach a large market of
     
 ## Device/external services
 
-+ Game will be connected to the Nasa Exoplanet API. This will provide real planet names to the planets the user will be traveling. I need assistance accessing the API still, but from what I can tell it is completely free and is [exactly what I wanted](https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html). 
-  + 
++ Game will be connected to the Nasa Exoplanet API. This will provide real planet names to the planets the user will be traveling. I need assistance accessing the API still, but from what I can tell it is completely free and is [exactly what I wanted](https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html).
 
 + User will be prompted to sign in to google account, this will assist with User Ids for the leaderboard. 
 
