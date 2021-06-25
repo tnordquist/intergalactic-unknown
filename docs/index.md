@@ -1,3 +1,11 @@
+---
+title: Project Overview
+subtitle: "Summary, Intended Users, Functionality, Persistent Data, Device/External Services, Possible Enhancements"
+menu: Project Overview
+order: 0
+---
+
+
 ## Summary
 
 I want to create an android application that serves as a game for its users, more specifically a choice based sci-fi survival game. The user will embark on an intergalactic journey where they must balance many variables. Some of these variables will be rational, like food or supplies, where others will be more subjective like relationship building or the lack thereof. My inspiration comes from a love of fiction and more specifically fantasy or science fiction not limited to just literature but also in media of all forms. 
