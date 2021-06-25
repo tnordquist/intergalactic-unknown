@@ -75,9 +75,14 @@ I plan to diversify my intended user base in hopes I can reach a large market of
     
 ## Device/external services
 
-+ Photos will be accessible so the player can upload their image into the games profile picture as the "captains photo", the photo can also be listed on the game leaderboards. 
++ Game will be connected to the Nasa Exoplanet API. This will provide real planet names to the planets the user will be traveling. I need assistance accessing the API still, but from what I can tell it is completely free and is exactly what I wanted. 
+  + https://exoplanetarchive.ipac.caltech.edu/docs/program_interfaces.html
 
-+ Contacts can be utilized to invite friends to play and eventually compare the scores amongst one another. I would like to make this device access optional to not discourage application use. 
++ User will be prompted to sign in to google account, this will assist with User Ids for the leaderboard. 
+
++ Contacts can be utilized to invite friends to play and eventually compare the scores amongst one another. This access will be optional to not discourage application use. 
+
++ The game will need a small handful of images to represent each phase, I want the same images to be reused to reinforce what phase the user is in. 
 
 ## Stretch goals/possible enhancements 
 
