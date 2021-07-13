@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.oregontrail;
+package edu.cnm.deepdive.intergalacticUnknown;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

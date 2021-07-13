@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.oregontrail;
+package edu.cnm.deepdive.intergalacticUnknown;
 
 import org.junit.Test;
 

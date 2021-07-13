@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.oregontrail;
+package edu.cnm.deepdive.intergalacticUnknown;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
