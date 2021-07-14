@@ -5,28 +5,32 @@ import androidx.room.TypeConverter;
 
 public enum PlanetType {
 
-  LUSH(2, true),
-  RADIATION(-2, true),
-  SCORCHED(-1, false),
-  FROZEN(-1, false),
-  VOLCANIC(-1, false),
-  MARSH(1, false);
+  LUSH(2, 1),
+  RADIATION(-2, 1),
+  SCORCHED(-1, 3),
+  FROZEN(-1, 2),
+  VOLCANIC(-1, 5),
+  MARSH(1, 4);
 
   private final int baseDamage;
-  private final boolean randomEventOccurs;
+ // private final boolean randomEventOccurs;
 
-  PlanetType(int baseDamage, boolean randomEventOccurs) {
+  private String Name;
+
+  private int resourceAvailable;
+
+  PlanetType(int baseDamage, int resource) {
     this.baseDamage = baseDamage;
-    this.randomEventOccurs = randomEventOccurs;
+    this.resourceAvailable = resource;
   }
 
   public int getBaseDamage() {
     return baseDamage;
   }
 
-  public boolean isRandomEventOccurs() {
-    return randomEventOccurs;
-  }
+ // public boolean isRandomEventOccurs() {
+ //   return randomEventOccurs;
+ // }
 
   @TypeConverter
   public static Integer planetTypeToInteger(PlanetType value) {

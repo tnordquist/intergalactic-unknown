@@ -6,10 +6,14 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+/*
 @Entity(
     foreignKeys = {
         @ForeignKey(
-
+            entity = Game.class,
+            childColumns = {"game_id"},
+            parentColumns = {"game_id"},
+            onDelete = ForeignKey.CASCADE
         )
 
 
@@ -75,3 +79,4 @@ public class Planet {
     this.planetName = planetName;
   }
 }
+*/

@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 @Entity
 public class RandomEvent {
 
+
+
   @PrimaryKey (autoGenerate = false)
   @ColumnInfo (name = "random_event_id")
   private long id;
@@ -19,6 +21,9 @@ public class RandomEvent {
 
   @ColumnInfo (name = "planet_type", defaultValue = "false")
   private boolean planetType;
+
+
+
 
   public long getId() {
     return id;
