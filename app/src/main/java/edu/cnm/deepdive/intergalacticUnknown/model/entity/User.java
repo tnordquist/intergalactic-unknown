@@ -1,25 +1,36 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(
+    indices = {
+        @Index(value = {"oauth_key"}, unique = true)
+    }
+)
 public class User {
 
-  @PrimaryKey
-  @ColumnInfo
-  private long userId;
+  @PrimaryKey (autoGenerate = true)
+  @ColumnInfo (name = "user_id")
+  private long id;
 
-  @ColumnInfo
+  @NonNull
+  @ColumnInfo (name = "oauth_key")
+  private String oauthKey;
+
+  @NonNull
+  @ColumnInfo (name = "user_name")
   private String userName;
 
-  public long getUserId() {
-    return userId;
+  public long getId() {
+    return id;
   }
 
-  public void setUserId(long userId) {
-    this.userId = userId;
+  public void setId(long id) {
+    this.id = id;
   }
 
   public String getUserName() {

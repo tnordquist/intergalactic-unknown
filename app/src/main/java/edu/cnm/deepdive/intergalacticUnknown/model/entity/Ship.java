@@ -8,71 +8,72 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Ship {
 
-  @PrimaryKey
-  private long shipID;
+  @PrimaryKey (autoGenerate = true)
+  @ColumnInfo (name = "ship_id")
+  private long id;
 
-  @ColumnInfo
-  private int shipHealth;
+  @ColumnInfo (name = "ship_health")
+  private int health;
 
-  @ColumnInfo
-  private int shipFuel;
+  @ColumnInfo (name = "ship_fuel")
+  private int fuel;
 
-  @ColumnInfo
+  @ColumnInfo (name = "ship_damage_buffer")
   @Nullable
-  private int shipDamageBuffer;
+  private int damageBuffer;
 
-  @ColumnInfo
+  @ColumnInfo (name = "random_event_protection")
   @Nullable
-  private int[] randomEventProtection;
+  private int[] eventProtection;
 
-  @ColumnInfo
+  @ColumnInfo (name = "planet_damage")
   private int planetDamage;
 
-  @ColumnInfo
+  @ColumnInfo (name = "game_id")
   private long gameId;
 
-  @ColumnInfo
+  @ColumnInfo (name = "random_event_ship")
   private boolean randomEventShip;
 
-  public long getShipID() {
-    return shipID;
+  public long getId() {
+    return id;
   }
 
-  public void setShipID(long shipID) {
-    this.shipID = shipID;
+  public void setId(long id) {
+    this.id = id;
   }
 
-  public int getShipHealth() {
-    return shipHealth;
+  public int getHealth() {
+    return health;
   }
 
-  public void setShipHealth(int shipHealth) {
-    this.shipHealth = shipHealth;
+  public void setHealth(int health) {
+    this.health = health;
   }
 
-  public int getShipFuel() {
-    return shipFuel;
+  public int getFuel() {
+    return fuel;
   }
 
-  public void setShipFuel(int shipFuel) {
-    this.shipFuel = shipFuel;
+  public void setFuel(int fuel) {
+    this.fuel = fuel;
   }
 
-  public int getShipDamageBuffer() {
-    return shipDamageBuffer;
+  public int getDamageBuffer() {
+    return damageBuffer;
   }
 
-  public void setShipDamageBuffer(int shipDamageBuffer) {
-    this.shipDamageBuffer = shipDamageBuffer;
+  public void setDamageBuffer(int damageBuffer) {
+    this.damageBuffer = damageBuffer;
   }
 
   @Nullable
-  public int[] getRandomEventProtection() {
-    return randomEventProtection;
+  public int[] getEventProtection() {
+    return eventProtection;
   }
 
-  public void setRandomEventProtection(@Nullable int[] randomEventProtection) {
-    this.randomEventProtection = randomEventProtection;
+  public void setEventProtection(@Nullable int[] eventProtection) {
+    this.eventProtection = eventProtection;
   }
 
   public int getPlanetDamage() {

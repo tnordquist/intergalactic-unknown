@@ -1,30 +1,54 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(
+    foreignKeys = {
+        @ForeignKey(
+
+        )
+
+
+    }
+)
 public class Planet {
 
-  @PrimaryKey
-  private long planetId;
+  @PrimaryKey (autoGenerate = true)
+  @ColumnInfo (name = "planet_id")
+  private long id;
 
-  @ColumnInfo
+  @NonNull
+  @ColumnInfo(name = "planet_type", index = true)
+  private PlanetType planetType;
+
+  @ColumnInfo (name = "game_id")
   private long gameId;
 
-  @ColumnInfo
+  @ColumnInfo (name = "planet_damage")
   private int planetDamage;
 
-  @ColumnInfo
+  @ColumnInfo (name = "planet_name")
   private String planetName;
 
-  public long getPlanetId() {
-    return planetId;
+  public long getId() {
+    return id;
   }
 
-  public void setPlanetId(long planetId) {
-    this.planetId = planetId;
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  @NonNull
+  public PlanetType getPlanetType() {
+    return planetType;
+  }
+
+  public void setPlanetType(@NonNull PlanetType planetType) {
+    this.planetType = planetType;
   }
 
   public long getGameId() {

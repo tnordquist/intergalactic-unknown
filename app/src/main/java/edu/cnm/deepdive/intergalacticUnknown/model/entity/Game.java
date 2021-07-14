@@ -2,33 +2,77 @@ package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(
+    foreignKeys = {
+        @ForeignKey(
+            entity = User.class,
+            childColumns = {"user_id"},
+            parentColumns = {"user_id"},
+            onDelete = ForeignKey.CASCADE
+        ),
+        @ForeignKey(
+            entity = Planet.class,
+            childColumns = {"planet_id"},
+            parentColumns = {"planet_id"},
+            onDelete = ForeignKey.CASCADE
+        ),
+        @ForeignKey(
+            entity = Ship.class,
+            childColumns = {"ship_status"},
+            parentColumns = {"ship_id"}
+        )
+    }
+)
 public class Game {
 
-  @ColumnInfo
-  private String userName;
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "game_id")
+  private long id;
 
-  @ColumnInfo
-  private long planetID;
+  private String pool;
 
-  @ColumnInfo
+  @ColumnInfo(name = "user_id", index = true)
+  private long userId;
+
+  @ColumnInfo(name = "planet_id")
+  private long planetId;
+
+  @ColumnInfo(name = "ship_status")
   private boolean shipStatus;
 
-  public String getUserName() {
-    return userName;
+  public long getId() {
+    return id;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setId(long id) {
+    this.id = id;
   }
 
-  public long getPlanetID() {
-    return planetID;
+  public String getPool() {
+    return pool;
   }
 
-  public void setPlanetID(long planetID) {
-    this.planetID = planetID;
+  public void setPool(String pool) {
+    this.pool = pool;
+  }
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
+
+  public long getPlanetId() {
+    return planetId;
+  }
+
+  public void setPlanetId(long planetId) {
+    this.planetId = planetId;
   }
 
   public boolean isShipStatus() {

@@ -1,64 +1,39 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity
-public class PlanetType {
+import androidx.room.TypeConverter;
 
-  @PrimaryKey
-  private long planetTypeId;
+public enum PlanetType {
 
-  @ColumnInfo
-  private int planetType;
+  LUSH(2, true),
+  RADIATION(-2, true),
+  SCORCHED(-1, false),
+  FROZEN(-1, false),
+  VOLCANIC(-1, false),
+  MARSH(1, false);
 
-  @ColumnInfo
-  private int baseDamage;
+  private final int baseDamage;
+  private final boolean randomEventOccurs;
 
-  @ColumnInfo
-  private boolean randomEventPlanetType;
-
-  @ColumnInfo
-  private int resourceAvailable;
-
-  public long getPlanetTypeId() {
-    return planetTypeId;
-  }
-
-  public void setPlanetTypeId(long planetTypeId) {
-    this.planetTypeId = planetTypeId;
-  }
-
-  public int getPlanetType() {
-    return planetType;
-  }
-
-  public void setPlanetType(int planetType) {
-    this.planetType = planetType;
+  PlanetType(int baseDamage, boolean randomEventOccurs) {
+    this.baseDamage = baseDamage;
+    this.randomEventOccurs = randomEventOccurs;
   }
 
   public int getBaseDamage() {
     return baseDamage;
   }
 
-  public void setBaseDamage(int baseDamage) {
-    this.baseDamage = baseDamage;
+  public boolean isRandomEventOccurs() {
+    return randomEventOccurs;
   }
 
-  public boolean isRandomEventPlanetType() {
-    return randomEventPlanetType;
+  @TypeConverter
+  public static Integer planetTypeToInteger(PlanetType value) {
+    return (value != null) ? value.ordinal() : null;
   }
-
-  public void setRandomEventPlanetType(boolean randomEventPlanetType) {
-    this.randomEventPlanetType = randomEventPlanetType;
-  }
-
-  public int getResourceAvailable() {
-    return resourceAvailable;
-  }
-
-  public void setResourceAvailable(int resourceAvailable) {
-    this.resourceAvailable = resourceAvailable;
+  @TypeConverter
+  public static PlanetType integerToPlanetType(Integer value) {
+    return (value != null) ? PlanetType.values()[value] : null;
   }
 }

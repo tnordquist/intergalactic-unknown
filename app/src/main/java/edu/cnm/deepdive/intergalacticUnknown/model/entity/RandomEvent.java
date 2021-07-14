@@ -7,47 +7,48 @@ import androidx.room.PrimaryKey;
 @Entity
 public class RandomEvent {
 
-  @PrimaryKey
-  private long random_event_id;
+  @PrimaryKey (autoGenerate = false)
+  @ColumnInfo (name = "random_event_id")
+  private long id;
 
-  @ColumnInfo
-  private String randomEventName;
+  @ColumnInfo (name = "name")
+  private String name;
 
-  @ColumnInfo
-  private boolean randomEventShip;
+  @ColumnInfo (name = "ship", defaultValue = "false")
+  private boolean ship;
 
-  @ColumnInfo
-  private boolean randomEventPlanetType;
+  @ColumnInfo (name = "planet_type", defaultValue = "false")
+  private boolean planetType;
 
-  public long getRandom_event_id() {
-    return random_event_id;
+  public long getId() {
+    return id;
   }
 
-  public void setRandom_event_id(long random_event_id) {
-    this.random_event_id = random_event_id;
+  public void setId(long id) {
+    this.id = id;
   }
 
-  public String getRandomEventName() {
-    return randomEventName;
+  public String getName() {
+    return name;
   }
 
-  public void setRandomEventName(String randomEventName) {
-    this.randomEventName = randomEventName;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public boolean isRandomEventShip() {
-    return randomEventShip;
+  public boolean isShip() {
+    return ship;
   }
 
-  public void setRandomEventShip(boolean randomEventShip) {
-    this.randomEventShip = randomEventShip;
+  public void setShip(boolean ship) {
+    this.ship = ship;
   }
 
-  public boolean isRandomEventPlanetType() {
-    return randomEventPlanetType;
+  public boolean isPlanetType() {
+    return planetType;
   }
 
-  public void setRandomEventPlanetType(boolean randomEventPlanetType) {
-    this.randomEventPlanetType = randomEventPlanetType;
+  public void setPlanetType(boolean planetType) {
+    this.planetType = planetType;
   }
 }
