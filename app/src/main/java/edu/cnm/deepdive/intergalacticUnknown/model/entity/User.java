@@ -33,11 +33,21 @@ public class User {
     this.id = id;
   }
 
+  @NonNull
+  public String getOauthKey() {
+    return oauthKey;
+  }
+
+  public void setOauthKey(@NonNull String oauthKey) {
+    this.oauthKey = oauthKey;
+  }
+
+  @NonNull
   public String getUserName() {
     return userName;
   }
 
-  public void setUserName(String userName) {
+  public void setUserName(@NonNull String userName) {
     this.userName = userName;
   }
 }

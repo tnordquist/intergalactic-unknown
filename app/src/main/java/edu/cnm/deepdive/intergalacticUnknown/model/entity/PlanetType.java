@@ -1,8 +1,14 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.EnumMap;
 public enum PlanetType {
 // baseDamage, resource
   LUSH(2, 1),
@@ -12,6 +18,10 @@ public enum PlanetType {
   VOLCANIC(-1, 5),
   MARSH(1, 4);
 
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "planet_type_id")
+  private long id;
+  private static final Gson gson = new Gson();
   private final int baseDamage;
 
   private final int resourceAvailable;
@@ -36,6 +46,37 @@ public enum PlanetType {
   @TypeConverter
   public static PlanetType integerToPlanetType(Integer value) {
     return (value != null) ? PlanetType.values()[value] : null;
+  }
+
+  @TypeConverter
+  public static String planetTypeIntegerMapToString(EnumMap<PlanetType, Integer> value) {
+    return (value != null)
+        ? gson.toJson(value)
+        : null;
+  }
+
+  @TypeConverter
+  public static EnumMap<PlanetType, Integer> stringToPlanetTypeIntegerMap(String value) {
+    EnumMap<PlanetType, Integer> result;
+    if (value != null) {
+      Type exampleMap = new TypeToken<EnumMap<PlanetType, Integer>>() {}.getType();
+      result = gson.fromJson(value, exampleMap);
+    } else {
+      result = null;
+    }
+    return result;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public static Gson getGson() {
+    return gson;
   }
 
   // public boolean isRandomEventOccurs() {

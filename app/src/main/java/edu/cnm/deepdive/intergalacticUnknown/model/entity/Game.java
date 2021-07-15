@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey;
         ),
         @ForeignKey(
             entity = Ship.class,
-            childColumns = {"ship_status"},
+            childColumns = {"ship_id"},
             parentColumns = {"ship_id"}
         )
     }
@@ -28,11 +28,11 @@ public class Game {
 
   private String pool;
 
-  @ColumnInfo(name = "user_name")
+  @ColumnInfo(name = "user_id", index = true)
   private long userId;
 
-  @ColumnInfo(name = "ship_status", defaultValue = "false")
-  private boolean shipStatus;
+  @ColumnInfo(name = "ship_id", index = true)
+  private long shipId;
 
   public long getId() {
     return id;
@@ -58,11 +58,12 @@ public class Game {
     this.userId = userId;
   }
 
-  public boolean isShipStatus() {
-    return shipStatus;
+  public long getShipId() {
+    return shipId;
   }
 
-  public void setShipStatus(boolean shipStatus) {
-    this.shipStatus = shipStatus;
+  public void setShipId(long shipId) {
+    this.shipId = shipId;
   }
 }
+
