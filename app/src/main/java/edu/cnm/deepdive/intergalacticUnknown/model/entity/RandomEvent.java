@@ -10,7 +10,7 @@ public class RandomEvent {
 
 
   @PrimaryKey (autoGenerate = false)
-  @ColumnInfo (name = "random_event_id")
+  @ColumnInfo (name = "id")
   private long id;
 
   @ColumnInfo (name = "name")

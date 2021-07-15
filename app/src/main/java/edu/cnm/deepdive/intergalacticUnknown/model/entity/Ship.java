@@ -3,14 +3,28 @@ package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import java.util.EnumMap;
 
-@Entity
+@Entity(
+    foreignKeys = {
+        @ForeignKey(
+            entity = RandomEvent.class,
+            childColumns = {"random_event_ship"},
+            parentColumns = {"id"},
+            onDelete = ForeignKey.CASCADE
+        ),
+    }
+)
 public class Ship {
 
   @PrimaryKey (autoGenerate = true)
   @ColumnInfo (name = "ship_id")
   private long id;
+
+  @ColumnInfo (name = "ship_status", defaultValue = "false")
+  private boolean shipStatus;
 
   @ColumnInfo (name = "ship_health")
   private int health;
@@ -18,21 +32,15 @@ public class Ship {
   @ColumnInfo (name = "ship_fuel")
   private int fuel;
 
-  @ColumnInfo (name = "ship_damage_buffer")
-  @Nullable
-  private int damageBuffer;
+  @ColumnInfo (name = "ship_damage_buffer", defaultValue = "false")
+  private boolean shipDamageBuffer;
 
-  @ColumnInfo (name = "random_event_protection")
-  @Nullable
-  private int[] eventProtection;
+  @ColumnInfo (name = "random_event_protection", defaultValue = "false")
+  private boolean randomEventProtection;
 
-  @ColumnInfo (name = "planet_damage")
-  private int planetDamage;
+  private EnumMap <PlanetType, Integer> planetDamage;
 
-  @ColumnInfo (name = "game_id")
-  private long gameId;
-
-  @ColumnInfo (name = "random_event_ship")
+  @ColumnInfo (name = "random_event_ship")    //here
   private boolean randomEventShip;
 
   public long getId() {
@@ -41,6 +49,14 @@ public class Ship {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public boolean isShipStatus() {
+    return shipStatus;
+  }
+
+  public void setShipStatus(boolean shipStatus) {
+    this.shipStatus = shipStatus;
   }
 
   public int getHealth() {
@@ -59,37 +75,29 @@ public class Ship {
     this.fuel = fuel;
   }
 
-  public int getDamageBuffer() {
-    return damageBuffer;
+  public boolean isShipDamageBuffer() {
+    return shipDamageBuffer;
   }
 
-  public void setDamageBuffer(int damageBuffer) {
-    this.damageBuffer = damageBuffer;
+  public void setShipDamageBuffer(boolean shipDamageBuffer) {
+    this.shipDamageBuffer = shipDamageBuffer;
   }
 
-  @Nullable
-  public int[] getEventProtection() {
-    return eventProtection;
+  public boolean isRandomEventProtection() {
+    return randomEventProtection;
   }
 
-  public void setEventProtection(@Nullable int[] eventProtection) {
-    this.eventProtection = eventProtection;
+  public void setRandomEventProtection(boolean randomEventProtection) {
+    this.randomEventProtection = randomEventProtection;
   }
 
-  public int getPlanetDamage() {
+  public EnumMap<PlanetType, Integer> getPlanetDamage() {
     return planetDamage;
   }
 
-  public void setPlanetDamage(int planetDamage) {
+  public void setPlanetDamage(
+      EnumMap<PlanetType, Integer> planetDamage) {
     this.planetDamage = planetDamage;
-  }
-
-  public long getGameId() {
-    return gameId;
-  }
-
-  public void setGameId(long gameId) {
-    this.gameId = gameId;
   }
 
   public boolean isRandomEventShip() {

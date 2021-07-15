@@ -14,12 +14,6 @@ import androidx.room.PrimaryKey;
             onDelete = ForeignKey.CASCADE
         ),
         @ForeignKey(
-            entity = Planet.class,
-            childColumns = {"planet_id"},
-            parentColumns = {"planet_id"},
-            onDelete = ForeignKey.CASCADE
-        ),
-        @ForeignKey(
             entity = Ship.class,
             childColumns = {"ship_status"},
             parentColumns = {"ship_id"}
@@ -34,13 +28,10 @@ public class Game {
 
   private String pool;
 
-  @ColumnInfo(name = "user_id", index = true)
+  @ColumnInfo(name = "user_name")
   private long userId;
 
-  @ColumnInfo(name = "planet_id")
-  private long planetId;
-
-  @ColumnInfo(name = "ship_status")
+  @ColumnInfo(name = "ship_status", defaultValue = "false")
   private boolean shipStatus;
 
   public long getId() {
@@ -65,14 +56,6 @@ public class Game {
 
   public void setUserId(long userId) {
     this.userId = userId;
-  }
-
-  public long getPlanetId() {
-    return planetId;
-  }
-
-  public void setPlanetId(long planetId) {
-    this.planetId = planetId;
   }
 
   public boolean isShipStatus() {
