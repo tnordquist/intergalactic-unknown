@@ -1,5 +1,5 @@
 ---
-title: DDL Diagram
+title: Data Definition Language
 subtitle: "DDL Diagram"
 menu: DDL
 order: 60
@@ -57,6 +57,5 @@ CREATE UNIQUE INDEX IF NOT EXISTS `index_User_oauth_key` ON `User` (`oauth_key`)
 
 ```
 
-## [ddl.sql](sql/ddl.sql)
-## [erd.md](erd.md)
-## [wireframe.md](wireframe.md)
+## [DDL.SQL](sql/ddl.sql)
+
