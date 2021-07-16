@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "53de1f6cb1682f90c5576ed1a2497262",
+    "identityHash": "9badf12dd0fa772649723efb17e17d1f",
     "entities": [
       {
         "tableName": "Game",
@@ -42,19 +42,19 @@
         "indices": [
           {
             "name": "index_Game_user_id",
-            "unique": false,
+            "unique": true,
             "columnNames": [
               "user_id"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_Game_user_id` ON `${TABLE_NAME}` (`user_id`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_user_id` ON `${TABLE_NAME}` (`user_id`)"
           },
           {
             "name": "index_Game_ship_id",
-            "unique": false,
+            "unique": true,
             "columnNames": [
               "ship_id"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_Game_ship_id` ON `${TABLE_NAME}` (`ship_id`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_ship_id` ON `${TABLE_NAME}` (`ship_id`)"
           }
         ],
         "foreignKeys": [
@@ -84,11 +84,11 @@
       },
       {
         "tableName": "PlanetData",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`planetDataId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `visited` INTEGER NOT NULL DEFAULT 0)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`planet_data_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `visited` INTEGER NOT NULL DEFAULT 0)",
         "fields": [
           {
-            "fieldPath": "planetDataId",
-            "columnName": "planetDataId",
+            "fieldPath": "id",
+            "columnName": "planet_data_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -102,7 +102,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "planetDataId"
+            "planet_data_id"
           ],
           "autoGenerate": true
         },
@@ -111,11 +111,11 @@
       },
       {
         "tableName": "RandomEvent",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `ship` INTEGER NOT NULL DEFAULT false, `planet_type` INTEGER NOT NULL DEFAULT false, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`random_event_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `ship` INTEGER NOT NULL DEFAULT false, `planet_type` INTEGER NOT NULL DEFAULT false)",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "random_event_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -123,7 +123,7 @@
             "fieldPath": "name",
             "columnName": "name",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "ship",
@@ -142,16 +142,16 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "random_event_id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
       },
       {
         "tableName": "Ship",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ship_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ship_status` INTEGER NOT NULL DEFAULT false, `ship_health` INTEGER NOT NULL, `ship_fuel` INTEGER NOT NULL, `ship_damage_buffer` INTEGER NOT NULL DEFAULT false, `random_event_protection` INTEGER NOT NULL DEFAULT false, `planetDamage` TEXT, `random_event_ship` INTEGER NOT NULL, FOREIGN KEY(`random_event_ship`) REFERENCES `RandomEvent`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ship_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ship_status` INTEGER NOT NULL DEFAULT false, `ship_health` INTEGER NOT NULL, `ship_fuel` INTEGER NOT NULL, `ship_damage_buffer` INTEGER NOT NULL DEFAULT false, `random_event_protection` INTEGER NOT NULL DEFAULT false, `planetDamage` TEXT, `random_event_ship` INTEGER NOT NULL, FOREIGN KEY(`random_event_ship`) REFERENCES `RandomEvent`(`random_event_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -211,7 +211,16 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_Ship_random_event_ship",
+            "unique": true,
+            "columnNames": [
+              "random_event_ship"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Ship_random_event_ship` ON `${TABLE_NAME}` (`random_event_ship`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "RandomEvent",
@@ -221,7 +230,7 @@
               "random_event_ship"
             ],
             "referencedColumns": [
-              "id"
+              "random_event_id"
             ]
           }
         ]
@@ -271,7 +280,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '53de1f6cb1682f90c5576ed1a2497262')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9badf12dd0fa772649723efb17e17d1f')"
     ]
   }
 }

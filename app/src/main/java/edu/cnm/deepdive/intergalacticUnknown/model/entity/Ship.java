@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -30,7 +29,7 @@ public class Ship {
 
   @ColumnInfo (name = "ship_status", defaultValue = "false")
   @NonNull
-  private boolean shipStatus;
+  private boolean status;
 
   @ColumnInfo (name = "ship_health")
   @NonNull
@@ -42,7 +41,7 @@ public class Ship {
 
   @ColumnInfo (name = "ship_damage_buffer", defaultValue = "false")
   @NonNull
-  private boolean shipDamageBuffer;
+  private boolean damageBuffer;
 
   @ColumnInfo (name = "random_event_protection", defaultValue = "false")
   @NonNull
@@ -62,12 +61,12 @@ public class Ship {
     this.id = id;
   }
 
-  public boolean isShipStatus() {
-    return shipStatus;
+  public boolean isStatus() {
+    return status;
   }
 
-  public void setShipStatus(boolean shipStatus) {
-    this.shipStatus = shipStatus;
+  public void setStatus(boolean status) {
+    this.status = status;
   }
 
   public int getHealth() {
@@ -86,12 +85,12 @@ public class Ship {
     this.fuel = fuel;
   }
 
-  public boolean isShipDamageBuffer() {
-    return shipDamageBuffer;
+  public boolean isDamageBuffer() {
+    return damageBuffer;
   }
 
-  public void setShipDamageBuffer(boolean shipDamageBuffer) {
-    this.shipDamageBuffer = shipDamageBuffer;
+  public void setDamageBuffer(boolean damageBuffer) {
+    this.damageBuffer = damageBuffer;
   }
 
   public boolean isRandomEventProtection() {
