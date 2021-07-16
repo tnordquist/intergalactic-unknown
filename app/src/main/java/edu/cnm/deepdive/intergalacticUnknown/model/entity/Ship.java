@@ -1,9 +1,11 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.util.EnumMap;
 
@@ -12,10 +14,13 @@ import java.util.EnumMap;
         @ForeignKey(
             entity = RandomEvent.class,
             childColumns = {"random_event_ship"},
-            parentColumns = {"id"},
+            parentColumns = {"random_event_id"},
             onDelete = ForeignKey.CASCADE
         ),
-    }
+    },
+    indices = {
+    @Index(value = {"random_event_ship"}, unique = true)
+}
 )
 public class Ship {
 
@@ -24,23 +29,29 @@ public class Ship {
   private long id;
 
   @ColumnInfo (name = "ship_status", defaultValue = "false")
+  @NonNull
   private boolean shipStatus;
 
   @ColumnInfo (name = "ship_health")
+  @NonNull
   private int health;
 
   @ColumnInfo (name = "ship_fuel")
+  @NonNull
   private int fuel;
 
   @ColumnInfo (name = "ship_damage_buffer", defaultValue = "false")
+  @NonNull
   private boolean shipDamageBuffer;
 
   @ColumnInfo (name = "random_event_protection", defaultValue = "false")
+  @NonNull
   private boolean randomEventProtection;
 
   private EnumMap <PlanetType, Integer> planetDamage;
 
-  @ColumnInfo (name = "random_event_ship")    //here
+  @ColumnInfo (name = "random_event_ship")
+  @NonNull //here
   private boolean randomEventShip;
 
   public long getId() {

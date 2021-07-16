@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(
@@ -18,7 +20,14 @@ import androidx.room.PrimaryKey;
             childColumns = {"ship_id"},
             parentColumns = {"ship_id"}
         )
+    },
+    indices = {
+    @Index(value = {"user_id"}, unique = true),
+    @Index(value = {"ship_id"}, unique = true)    //check these
     }
+
+
+
 )
 public class Game {
 
@@ -28,10 +37,12 @@ public class Game {
 
   private String pool;
 
-  @ColumnInfo(name = "user_id", index = true)
+  @ColumnInfo(name = "user_id")
+  @NonNull
   private long userId;
 
-  @ColumnInfo(name = "ship_id", index = true)
+  @ColumnInfo(name = "ship_id")
+  @NonNull
   private long shipId;
 
   public long getId() {

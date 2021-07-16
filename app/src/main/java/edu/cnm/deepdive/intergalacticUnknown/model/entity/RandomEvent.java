@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,17 +10,20 @@ public class RandomEvent {
 
 
 
-  @PrimaryKey (autoGenerate = false)
-  @ColumnInfo (name = "id")
+  @PrimaryKey (autoGenerate = true)
+  @ColumnInfo (name = "random_event_id")
   private long id;
 
   @ColumnInfo (name = "name")
+  @NonNull
   private String name;
 
   @ColumnInfo (name = "ship", defaultValue = "false")
+  @NonNull
   private boolean ship;
 
   @ColumnInfo (name = "planet_type", defaultValue = "false")
+  @NonNull
   private boolean planetType;
 
 

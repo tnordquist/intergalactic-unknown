@@ -3,7 +3,6 @@ package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
@@ -11,17 +10,19 @@ import androidx.room.PrimaryKey;
 public class PlanetData {
 
   @PrimaryKey(autoGenerate = true)
-  private long planetDataId;
+  @ColumnInfo(name = "planet_data_id")
+  private long id;
 
   @ColumnInfo (name = "visited", defaultValue = "0")
+  @NonNull
   private int visitedCount;
 
-  public long getPlanetDataId() {
-    return planetDataId;
+  public long getId() {
+    return id;
   }
 
-  public void setPlanetDataId(long planetDataId) {
-    this.planetDataId = planetDataId;
+  public void setId(long id) {
+    this.id = id;
   }
 
   public int getVisitedCount() {

@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.PlanetData;
 import io.reactivex.Single;
@@ -38,5 +40,8 @@ public interface PlanetDataDao {
 
   @Delete
   Single<Integer> delete(Collection<? extends PlanetData> planetData);
+
+  @Query("SELECT * FROM planetdata WHERE planet_data_id = :attemptId")
+  LiveData<PlanetData> select(long attemptId);
 
 }

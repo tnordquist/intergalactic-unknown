@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Game;
 import io.reactivex.Single;
@@ -38,4 +40,7 @@ public interface GameDao {
 
   @Delete
   Single<Integer> delete(Collection<? extends Game> games);
+
+  @Query("SELECT * FROM game WHERE game_id = :attemptId")
+  LiveData<Game> select(long attemptId);
 }

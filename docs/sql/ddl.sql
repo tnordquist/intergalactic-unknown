@@ -7,40 +7,24 @@ CREATE TABLE IF NOT EXISTS `Game`
     FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE,
     FOREIGN KEY (`ship_id`) REFERENCES `Ship` (`ship_id`) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
-0
-CREATE INDEX IF NOT EXISTS `index_Game_user_id` ON `Game` (`user_id`);
-CREATE INDEX IF NOT EXISTS `index_Game_ship_id` ON `Game` (`ship_id`);
-
-
+CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_user_id` ON `Game` (`user_id`);
+CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_ship_id` ON `Game` (`ship_id`);
 
 CREATE TABLE IF NOT EXISTS `PlanetData`
 (
-    `planetDataId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `visited`      INTEGER                           NOT NULL DEFAULT 0
+    `planet_data_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `visited`        INTEGER                           NOT NULL DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS `PlanetData`
-(
-    `id`          INTEGER NOT NULL,
-    `name`        TEXT,
-    `ship`        INTEGER NOT NULL DEFAULT false,
-    `planet_type` INTEGER NOT NULL DEFAULT false,
-    PRIMARY KEY (`id`)
-);
-
-
 
 CREATE TABLE IF NOT EXISTS `RandomEvent`
 (
-    `id`          INTEGER NOT NULL,
-    `name`        TEXT,
-    `ship`        INTEGER NOT NULL DEFAULT false,
-    `planet_type` INTEGER NOT NULL DEFAULT false,
-    PRIMARY KEY (`id`)
+    `random_event_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `name`            TEXT                              NOT NULL,
+    `ship`            INTEGER                           NOT NULL DEFAULT false,
+    `planet_type`     INTEGER                           NOT NULL DEFAULT false
 );
 
-
-
-CREATE TABLE IF NOT EXISTS `Ship}`
+CREATE TABLE IF NOT EXISTS `Ship`
 (
     `ship_id`                 INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     `ship_status`             INTEGER                           NOT NULL DEFAULT false,
@@ -50,9 +34,9 @@ CREATE TABLE IF NOT EXISTS `Ship}`
     `random_event_protection` INTEGER                           NOT NULL DEFAULT false,
     `planetDamage`            TEXT,
     `random_event_ship`       INTEGER                           NOT NULL,
-    FOREIGN KEY (`random_event_ship`) REFERENCES `RandomEvent` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE
+    FOREIGN KEY (`random_event_ship`) REFERENCES `RandomEvent` (`random_event_id`) ON UPDATE NO ACTION ON DELETE CASCADE
 );
-
+CREATE UNIQUE INDEX IF NOT EXISTS `index_Ship_random_event_ship` ON `Ship` (`random_event_ship`);
 
 CREATE TABLE IF NOT EXISTS `User`
 (
