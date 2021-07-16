@@ -1,5 +1,5 @@
 ---
-title: Entity Relationship Diagram / Data Definition Language
+title: Entity Relationship Diagram
 subtitle: "Relationship diagram between data entities"
 menu: ERD
 order: 40
