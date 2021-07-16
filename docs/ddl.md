@@ -10,7 +10,6 @@ order: 60
 CREATE TABLE IF NOT EXISTS `Game`
 (
     `game_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `pool`    TEXT,
     `user_id` INTEGER                           NOT NULL,
     `ship_id` INTEGER                           NOT NULL,
     FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE,

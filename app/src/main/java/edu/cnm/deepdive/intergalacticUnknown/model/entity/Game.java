@@ -35,8 +35,6 @@ public class Game {
   @ColumnInfo(name = "game_id")
   private long id;
 
-  private String pool;
-
   @ColumnInfo(name = "user_id")
   @NonNull
   private long userId;
@@ -51,14 +49,6 @@ public class Game {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  public String getPool() {
-    return pool;
-  }
-
-  public void setPool(String pool) {
-    this.pool = pool;
   }
 
   public long getUserId() {
