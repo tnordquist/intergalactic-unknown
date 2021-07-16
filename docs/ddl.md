@@ -1,3 +1,11 @@
+---
+title: DDL Diagram
+subtitle: "DDL Diagram"
+menu: DDL
+order: 60
+---
+
+
 ```sqlite
 CREATE TABLE IF NOT EXISTS `Game`
 (
