@@ -50,7 +50,7 @@ public class Ship {
   private EnumMap <PlanetType, Integer> planetDamage;
 
   @ColumnInfo (name = "random_event_ship")
-  @NonNull //here
+  @NonNull
   private boolean randomEventShip;
 
   public long getId() {
