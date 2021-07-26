@@ -11,10 +11,12 @@ import java.lang.reflect.Type;
 import java.util.EnumMap;
 public enum PlanetType {
 // baseDamage, resource
-  LUSH(2, 1),
+  LUSH(2, 2),
   RADIATION(-2, 1),
-  SCORCHED(-1, 3),
-  FROZEN(-1, 2),
+  SCORCHED(-1, 4),
+  FROZEN(-1, 3),
+
+
   VOLCANIC(-1, 5),
   MARSH(1, 4);
 
