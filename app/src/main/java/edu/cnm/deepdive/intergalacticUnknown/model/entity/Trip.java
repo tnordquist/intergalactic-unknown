@@ -3,6 +3,8 @@ package edu.cnm.deepdive.intergalacticUnknown.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
@@ -10,8 +12,20 @@ import java.util.Date;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
 @Entity(
-    tableName = "trip"
+    tableName = "trip",
+    indices = {
+        @Index(value = {"user_id"})
+    },
+    foreignKeys = {
+        @ForeignKey(
+            entity = User.class,
+            parentColumns = "user_id",
+            childColumns = "user_id",
+            onDelete = ForeignKey.CASCADE
+        )
+    }
 )
+
 public class Trip {
 
   @PrimaryKey(autoGenerate = true)
@@ -29,6 +43,14 @@ public class Trip {
   @NonNull
   @ColumnInfo(name = "augmented_resource", index = true)
   private ResourceType augmentedResource;
+
+  @ColumnInfo(index = true)
+  private long userId;
+
+
+
+
+
 
   public long getId() {
     return id;
