@@ -41,7 +41,7 @@ public interface UserDao {
   @Delete
   Single<Integer> delete(Collection<? extends User> Users);
 
-  @Query("SELECT * FROM user WHERE user_id = :attemptId")
-  LiveData<User> select(long attemptId);
+  @Query("SELECT * FROM user WHERE user_id = :userId")
+  LiveData<User> select(long userId);
 
 }

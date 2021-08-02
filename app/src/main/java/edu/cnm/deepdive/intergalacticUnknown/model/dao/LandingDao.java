@@ -41,7 +41,7 @@ public interface LandingDao {
   @Delete
   Single<Integer> delete(Collection<? extends Landing> Landings);
 
-  @Query("SELECT * FROM landing WHERE landing_id = :attemptId ")
-  LiveData<Landing> select(long attemptId);
+  @Query("SELECT * FROM landing WHERE landing_id = :landingID ")
+  LiveData<Landing> select(long landingID);
 
 }

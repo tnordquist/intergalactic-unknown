@@ -42,7 +42,7 @@ public interface TripDao {
   @Delete
   Single<Integer> delete(Collection<? extends Trip> Trips);
 
-  @Query("SELECT * FROM trip WHERE trip_id = :attemptId ")
-  LiveData<Trip> select(long attemptId);
+  @Query("SELECT * FROM trip WHERE trip_id = :tripId ")
+  LiveData<Trip> select(long tripId);
 
 }

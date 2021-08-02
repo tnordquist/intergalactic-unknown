@@ -13,9 +13,6 @@ import java.util.Date;
 @SuppressWarnings("NotNullFieldNotInitialized")
 @Entity(
     tableName = "trip",
-    indices = {
-        @Index(value = {"user_id"})
-    },
     foreignKeys = {
         @ForeignKey(
             entity = User.class,
@@ -44,7 +41,7 @@ public class Trip {
   @ColumnInfo(name = "augmented_resource", index = true)
   private ResourceType augmentedResource;
 
-  @ColumnInfo(index = true)
+  @ColumnInfo(index = true, name = "user_id")
   private long userId;
 
 
@@ -87,5 +84,13 @@ public class Trip {
   public void setAugmentedResource(
       @NonNull ResourceType augmentedResource) {
     this.augmentedResource = augmentedResource;
+  }
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 }

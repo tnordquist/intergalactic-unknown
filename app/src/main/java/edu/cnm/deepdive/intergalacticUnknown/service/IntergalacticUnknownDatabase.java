@@ -18,7 +18,7 @@ import java.util.Date;
 
 @Database(
     entities = {Trip.class, Landing.class, Delta.class, User.class},
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 @TypeConverters({Converters.class, ResourceType.class, PlanetType.class})
