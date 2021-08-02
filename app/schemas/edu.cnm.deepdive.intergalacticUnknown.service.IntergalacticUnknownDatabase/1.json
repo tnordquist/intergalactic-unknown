@@ -2,235 +2,233 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9badf12dd0fa772649723efb17e17d1f",
+    "identityHash": "9fae60b24cded8e194a3aa6add17d276",
     "entities": [
       {
-        "tableName": "Game",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`game_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pool` TEXT, `user_id` INTEGER NOT NULL, `ship_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `User`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`ship_id`) REFERENCES `Ship`(`ship_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "tableName": "trip",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`trip_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `started` INTEGER NOT NULL, `preferred_destination` INTEGER NOT NULL, `augmented_resource` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "game_id",
+            "columnName": "trip_id",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "pool",
-            "columnName": "pool",
-            "affinity": "TEXT",
-            "notNull": false
-          },
-          {
-            "fieldPath": "userId",
-            "columnName": "user_id",
+            "fieldPath": "started",
+            "columnName": "started",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "shipId",
-            "columnName": "ship_id",
+            "fieldPath": "preferredDestination",
+            "columnName": "preferred_destination",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "augmentedResource",
+            "columnName": "augmented_resource",
             "affinity": "INTEGER",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "game_id"
+            "trip_id"
           ],
           "autoGenerate": true
         },
         "indices": [
           {
-            "name": "index_Game_user_id",
-            "unique": true,
+            "name": "index_trip_started",
+            "unique": false,
             "columnNames": [
-              "user_id"
+              "started"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_user_id` ON `${TABLE_NAME}` (`user_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_started` ON `${TABLE_NAME}` (`started`)"
           },
           {
-            "name": "index_Game_ship_id",
-            "unique": true,
+            "name": "index_trip_preferred_destination",
+            "unique": false,
             "columnNames": [
-              "ship_id"
+              "preferred_destination"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Game_ship_id` ON `${TABLE_NAME}` (`ship_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_preferred_destination` ON `${TABLE_NAME}` (`preferred_destination`)"
+          },
+          {
+            "name": "index_trip_augmented_resource",
+            "unique": false,
+            "columnNames": [
+              "augmented_resource"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_augmented_resource` ON `${TABLE_NAME}` (`augmented_resource`)"
           }
         ],
-        "foreignKeys": [
-          {
-            "table": "User",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "user_id"
-            ],
-            "referencedColumns": [
-              "user_id"
-            ]
-          },
-          {
-            "table": "Ship",
-            "onDelete": "NO ACTION",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "ship_id"
-            ],
-            "referencedColumns": [
-              "ship_id"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "PlanetData",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`planet_data_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `visited` INTEGER NOT NULL DEFAULT 0)",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "planet_data_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "visitedCount",
-            "columnName": "visited",
-            "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "0"
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "planet_data_id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "RandomEvent",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`random_event_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `ship` INTEGER NOT NULL DEFAULT false, `planet_type` INTEGER NOT NULL DEFAULT false)",
+        "tableName": "landing",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`landing_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `landing_order` INTEGER NOT NULL, `planet_type` INTEGER NOT NULL, `planet_name` TEXT NOT NULL, `trip_id` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "random_event_id",
+            "columnName": "landing_id",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "name",
-            "columnName": "name",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "ship",
-            "columnName": "ship",
+            "fieldPath": "order",
+            "columnName": "landing_order",
             "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "false"
+            "notNull": true
           },
           {
             "fieldPath": "planetType",
             "columnName": "planet_type",
             "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "false"
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "random_event_id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [],
-        "foreignKeys": []
-      },
-      {
-        "tableName": "Ship",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`ship_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `ship_status` INTEGER NOT NULL DEFAULT false, `ship_health` INTEGER NOT NULL, `ship_fuel` INTEGER NOT NULL, `ship_damage_buffer` INTEGER NOT NULL DEFAULT false, `random_event_protection` INTEGER NOT NULL DEFAULT false, `planetDamage` TEXT, `random_event_ship` INTEGER NOT NULL, FOREIGN KEY(`random_event_ship`) REFERENCES `RandomEvent`(`random_event_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "ship_id",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "shipStatus",
-            "columnName": "ship_status",
-            "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "false"
-          },
-          {
-            "fieldPath": "health",
-            "columnName": "ship_health",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "fuel",
-            "columnName": "ship_fuel",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "shipDamageBuffer",
-            "columnName": "ship_damage_buffer",
-            "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "false"
-          },
-          {
-            "fieldPath": "randomEventProtection",
-            "columnName": "random_event_protection",
-            "affinity": "INTEGER",
-            "notNull": true,
-            "defaultValue": "false"
-          },
-          {
-            "fieldPath": "planetDamage",
-            "columnName": "planetDamage",
+            "fieldPath": "planetName",
+            "columnName": "planet_name",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
-            "fieldPath": "randomEventShip",
-            "columnName": "random_event_ship",
+            "fieldPath": "tripId",
+            "columnName": "trip_id",
             "affinity": "INTEGER",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "ship_id"
+            "landing_id"
           ],
           "autoGenerate": true
         },
         "indices": [
           {
-            "name": "index_Ship_random_event_ship",
+            "name": "index_landing_trip_id_landing_order",
             "unique": true,
             "columnNames": [
-              "random_event_ship"
+              "trip_id",
+              "landing_order"
             ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_Ship_random_event_ship` ON `${TABLE_NAME}` (`random_event_ship`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_landing_trip_id_landing_order` ON `${TABLE_NAME}` (`trip_id`, `landing_order`)"
+          },
+          {
+            "name": "index_landing_planet_type",
+            "unique": false,
+            "columnNames": [
+              "planet_type"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_landing_planet_type` ON `${TABLE_NAME}` (`planet_type`)"
+          },
+          {
+            "name": "index_landing_trip_id",
+            "unique": false,
+            "columnNames": [
+              "trip_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_landing_trip_id` ON `${TABLE_NAME}` (`trip_id`)"
           }
         ],
         "foreignKeys": [
           {
-            "table": "RandomEvent",
+            "table": "trip",
             "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
-              "random_event_ship"
+              "trip_id"
             ],
             "referencedColumns": [
-              "random_event_id"
+              "trip_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "delta",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`delta_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `trip_id` INTEGER, `landing_id` INTEGER, `amount` INTEGER NOT NULL, `mining` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`landing_id`) REFERENCES `landing`(`landing_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "delta_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripId",
+            "columnName": "trip_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "landingId",
+            "columnName": "landing_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mining",
+            "columnName": "mining",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "delta_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_delta_trip_id",
+            "unique": false,
+            "columnNames": [
+              "trip_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_delta_trip_id` ON `${TABLE_NAME}` (`trip_id`)"
+          },
+          {
+            "name": "index_delta_landing_id",
+            "unique": false,
+            "columnNames": [
+              "landing_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_delta_landing_id` ON `${TABLE_NAME}` (`landing_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "trip",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "trip_id"
+            ],
+            "referencedColumns": [
+              "trip_id"
+            ]
+          },
+          {
+            "table": "landing",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "landing_id"
+            ],
+            "referencedColumns": [
+              "landing_id"
             ]
           }
         ]
@@ -280,7 +278,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9badf12dd0fa772649723efb17e17d1f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9fae60b24cded8e194a3aa6add17d276')"
     ]
   }
 }

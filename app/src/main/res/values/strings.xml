@@ -1,3 +1,17 @@
 <resources>
   <string name="app_name">Galactic Unknown</string>
+
+  <string-array name="frozen_names">
+    <item>Popsicle</item>
+    <item>Ice Cube</item>
+  </string-array>
+  <string-array name="scorched_names">
+    <item>Tamale</item>
+    <item>Green Chile</item>
+  </string-array>
+  <string-array name="volcanic_names">
+    <item>Crackatoa</item>
+    <item>Summer Day</item>
+  </string-array>
+
 </resources>
