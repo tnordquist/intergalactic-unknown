@@ -48,6 +48,8 @@ dependencies {
     // .jar-based libraries included in project
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
     // Basic Jetpack support
     implementation 'androidx.core:core:1.3.2'
     implementation 'androidx.media:media:1.3.1'

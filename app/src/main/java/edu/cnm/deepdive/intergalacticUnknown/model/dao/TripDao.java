@@ -1,17 +1,23 @@
 package edu.cnm.deepdive.intergalacticUnknown.model.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Landing;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.User;
+import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
+import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
 import io.reactivex.Single;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
+@Dao
 public interface TripDao {
 
 
@@ -42,7 +48,10 @@ public interface TripDao {
   @Delete
   Single<Integer> delete(Collection<? extends Trip> Trips);
 
-  @Query("SELECT * FROM trip WHERE trip_id = :tripId ")
+  @Transaction
+  @Query("SELECT t.* "
+      + "FROM trip AS t "
+      + "WHERE t.trip_id = :tripId")
   LiveData<Trip> select(long tripId);
 
 }

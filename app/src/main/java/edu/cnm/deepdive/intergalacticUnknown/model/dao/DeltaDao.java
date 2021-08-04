@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Delta;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.User;
@@ -43,6 +44,7 @@ public interface DeltaDao {
   @Delete
   Single<Integer> delete(Collection<? extends Delta> deltas);
 
+  @Transaction
   @Query("select d.resource_type, sum(d.amount) as amount "
       + "from trip as t "
       + "left join landing as ln on ln.trip_id = t.trip_id "

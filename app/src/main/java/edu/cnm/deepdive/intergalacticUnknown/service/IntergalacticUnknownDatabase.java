@@ -6,6 +6,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
+import edu.cnm.deepdive.intergalacticUnknown.model.dao.DeltaDao;
+import edu.cnm.deepdive.intergalacticUnknown.model.dao.LandingDao;
+import edu.cnm.deepdive.intergalacticUnknown.model.dao.TripDao;
 import edu.cnm.deepdive.intergalacticUnknown.model.dao.UserDao;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Delta;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Landing;
@@ -39,6 +42,10 @@ public abstract class IntergalacticUnknownDatabase extends RoomDatabase {
 
 
   public abstract UserDao getUserDao();
+  public abstract DeltaDao getDeltaDao();
+  public abstract LandingDao getLandingDao();
+  public abstract TripDao getTripDao();
+
   private static class InstanceHolder {
 
     private static final IntergalacticUnknownDatabase INSTANCE =
