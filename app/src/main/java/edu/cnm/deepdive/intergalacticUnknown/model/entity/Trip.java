@@ -44,8 +44,8 @@ public class Trip {
   @ColumnInfo(index = true, name = "user_id")
   private long userId;
 
-
-
+  @ColumnInfo(name = "planets_visited")
+  private int planetsVisited;
 
 
 
@@ -92,5 +92,13 @@ public class Trip {
 
   public void setUserId(long userId) {
     this.userId = userId;
+  }
+
+  public int getPlanetsVisited() {
+    return planetsVisited;
+  }
+
+  public void setPlanetsVisited(int planetsVisited) {
+    this.planetsVisited = planetsVisited;
   }
 }

@@ -25,11 +25,7 @@ public class TripRepository {
 
   public Single<Trip> save(Trip trip) {
     return (
-        (trip.getId() > 0)
-            ? tripDao
-            .update(trip)
-            .map((ignored) -> trip)
-            : tripDao
+         tripDao
                 .insert(trip)
                 .map((id) -> {
                   trip.setId(id);

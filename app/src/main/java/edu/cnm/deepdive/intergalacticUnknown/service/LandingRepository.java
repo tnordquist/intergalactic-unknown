@@ -22,11 +22,7 @@ public class LandingRepository {
   }
   public Single<Landing> save(Landing landing) {
     return (
-        (landing.getId() > 0)
-        ? landingDao
-            .update(landing)
-            .map((ignored) -> landing)
-            : landingDao
+         landingDao
         .insert(landing)
         .map((id) -> {
           landing.setId(id);
