@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = FragmentHomeBinding.inflate(inflater, container, false);
-    binding.start.setOnClickListener((v) ->
+    binding.startGame.setOnClickListener((v) ->
         Navigation.findNavController(binding.getRoot()).navigate(HomeFragmentDirections.actionHomeFragmentToStationFragment()));
     return binding.getRoot();
   }

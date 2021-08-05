@@ -9,9 +9,21 @@
     android:name="edu.cnm.deepdive.intergalacticUnknown.controller.HomeFragment"
     android:label="fragment_home"
     tools:layout="@layout/fragment_home">
+
+    <argument
+      android:name="user_id"
+      app:argType="long"
+      android:defaultValue="0"/>
+
     <action
       android:id="@+id/action_home_fragment_to_station_fragment"
-      app:destination="@id/station_fragment"/>
+      app:destination="@id/station_fragment">
+
+      <argument
+        android:name="trip_id"
+        app:argType="long"/>
+
+    </action>
   </fragment>
 
   <fragment
@@ -20,17 +32,37 @@
     android:label="fragment_planet"
     tools:layout="@layout/fragment_planet">
 
-
+    <argument
+      android:name="trip_id"
+      app:argType="long"
+      android:defaultValue="0"/>
 
     <action
       android:id="@+id/action_planet_fragment_self"
-      app:destination="@id/planet_fragment"/>
+      app:destination="@id/planet_fragment">
+
+      <argument
+        android:name="trip_id"
+        app:argType="long"/>
+    </action>
+
     <action
       android:id="@+id/action_planet_fragment_to_home_fragment"
-      app:destination="@id/home_fragment"/>
+      app:destination="@id/home_fragment">
+
+      <argument
+        android:name="user_id"
+        app:argType="long"/>
+    </action>
+
     <action
       android:id="@+id/action_planet_fragment_to_station_fragment"
-      app:destination="@id/station_fragment"/>
+      app:destination="@id/station_fragment">
+
+      <argument
+        android:name="trip_id"
+        app:argType="long"/>
+    </action>
   </fragment>
 
   <fragment
@@ -38,10 +70,20 @@
     android:name="edu.cnm.deepdive.intergalacticUnknown.controller.StationFragment"
     android:label="fragment_station"
     tools:layout="@layout/fragment_station">
+
+    <argument
+      android:name="trip_id"
+      app:argType="long"
+      android:defaultValue="0"/>
+
+
     <action
       android:id="@+id/action_station_fragment_to_planet_fragment"
       app:destination="@id/planet_fragment">
 
+      <argument
+        android:name="trip_id"
+        app:argType="long"/>
     </action>
   </fragment>
 
