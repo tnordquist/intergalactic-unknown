@@ -53,4 +53,6 @@ public interface DeltaDao {
       + "group by d.resource_type")
   LiveData<List<ResourceSummary>> getResourceSummary(long tripId);
 
+  //add two more queries, one that returns a list of deltas for given trip (live data), one that returns a list of deltas for a given landing. delta has trip id and landing id.
+
 }

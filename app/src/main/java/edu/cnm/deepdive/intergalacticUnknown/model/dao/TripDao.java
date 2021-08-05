@@ -10,6 +10,7 @@ import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Landing;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.User;
+import edu.cnm.deepdive.intergalacticUnknown.model.pojo.TripWithLandings;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
 import io.reactivex.Single;
@@ -52,6 +53,6 @@ public interface TripDao {
   @Query("SELECT t.* "
       + "FROM trip AS t "
       + "WHERE t.trip_id = :tripId")
-  LiveData<Trip> select(long tripId);
+  LiveData<TripWithLandings> select(long tripId);
 
 }

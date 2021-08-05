@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.intergalacticUnknown.model.dao.TripDao;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.pojo.ResourceSummary;
+import edu.cnm.deepdive.intergalacticUnknown.model.pojo.TripWithLandings;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
@@ -35,7 +36,7 @@ public class TripRepository {
         .subscribeOn(Schedulers.io());
   }
 
-  LiveData<Trip> getTrip(long tripId) {
+  LiveData<TripWithLandings> getTrip(long tripId) {
     return tripDao.select(tripId);
 
   }

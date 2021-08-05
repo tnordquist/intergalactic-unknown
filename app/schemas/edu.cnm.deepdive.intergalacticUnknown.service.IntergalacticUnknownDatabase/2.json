@@ -1,22 +1,324 @@
-CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`trip_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `started` INTEGER NOT NULL, `preferred_destination` INTEGER NOT NULL, `augmented_resource` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `User`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE );
-CREATE INDEX IF NOT EXISTS `index_trip_started` ON `${TABLE_NAME}` (`started`);
-CREATE INDEX IF NOT EXISTS `index_trip_preferred_destination` ON `${TABLE_NAME}` (`preferred_destination`);
-CREATE INDEX IF NOT EXISTS `index_trip_augmented_resource` ON `${TABLE_NAME}` (`augmented_resource`);
-CREATE INDEX IF NOT EXISTS `index_trip_user_id` ON `${TABLE_NAME}` (`user_id`);
-    
-    
-CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`landing_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `landing_order` INTEGER NOT NULL, `planet_type` INTEGER NOT NULL, `planet_name` TEXT NOT NULL, `trip_id` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE );
-CREATE UNIQUE INDEX IF NOT EXISTS `index_landing_trip_id_landing_order` ON `${TABLE_NAME}` (`trip_id`, `landing_order`);
-CREATE INDEX IF NOT EXISTS `index_landing_planet_type` ON `${TABLE_NAME}` (`planet_type`);
-CREATE INDEX IF NOT EXISTS `index_landing_trip_id` ON `${TABLE_NAME}` (`trip_id`);
-    
-    
-CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`delta_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `trip_id` INTEGER, `landing_id` INTEGER, `resource_type` INTEGER NOT NULL, `amount` INTEGER NOT NULL, `mining` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`landing_id`) REFERENCES `landing`(`landing_id`) ON UPDATE NO ACTION ON DELETE CASCADE );
-CREATE INDEX IF NOT EXISTS `index_delta_trip_id` ON `${TABLE_NAME}` (`trip_id`);
-CREATE INDEX IF NOT EXISTS `index_delta_landing_id` ON `${TABLE_NAME}` (`landing_id`);
-CREATE INDEX IF NOT EXISTS `index_delta_resource_type` ON `${TABLE_NAME}` (`resource_type`);
-    
-    
-CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `oauth_key` TEXT NOT NULL, `user_name` TEXT NOT NULL);
-CREATE UNIQUE INDEX IF NOT EXISTS `index_User_oauth_key` ON `${TABLE_NAME}` (`oauth_key`);
-CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT);
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "1650b014cad6f53fdb63b20bc6cc1823",
+    "entities": [
+      {
+        "tableName": "trip",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`trip_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `started` INTEGER NOT NULL, `preferred_destination` INTEGER NOT NULL, `augmented_resource` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `User`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "trip_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "started",
+            "columnName": "started",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "preferredDestination",
+            "columnName": "preferred_destination",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "augmentedResource",
+            "columnName": "augmented_resource",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "trip_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_trip_started",
+            "unique": false,
+            "columnNames": [
+              "started"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_started` ON `${TABLE_NAME}` (`started`)"
+          },
+          {
+            "name": "index_trip_preferred_destination",
+            "unique": false,
+            "columnNames": [
+              "preferred_destination"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_preferred_destination` ON `${TABLE_NAME}` (`preferred_destination`)"
+          },
+          {
+            "name": "index_trip_augmented_resource",
+            "unique": false,
+            "columnNames": [
+              "augmented_resource"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_augmented_resource` ON `${TABLE_NAME}` (`augmented_resource`)"
+          },
+          {
+            "name": "index_trip_user_id",
+            "unique": false,
+            "columnNames": [
+              "user_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_trip_user_id` ON `${TABLE_NAME}` (`user_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "User",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "user_id"
+            ],
+            "referencedColumns": [
+              "user_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "landing",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`landing_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `landing_order` INTEGER NOT NULL, `planet_type` INTEGER NOT NULL, `planet_name` TEXT NOT NULL, `trip_id` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "landing_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "landing_order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "planetType",
+            "columnName": "planet_type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "planetName",
+            "columnName": "planet_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripId",
+            "columnName": "trip_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "landing_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_landing_trip_id_landing_order",
+            "unique": true,
+            "columnNames": [
+              "trip_id",
+              "landing_order"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_landing_trip_id_landing_order` ON `${TABLE_NAME}` (`trip_id`, `landing_order`)"
+          },
+          {
+            "name": "index_landing_planet_type",
+            "unique": false,
+            "columnNames": [
+              "planet_type"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_landing_planet_type` ON `${TABLE_NAME}` (`planet_type`)"
+          },
+          {
+            "name": "index_landing_trip_id",
+            "unique": false,
+            "columnNames": [
+              "trip_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_landing_trip_id` ON `${TABLE_NAME}` (`trip_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "trip",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "trip_id"
+            ],
+            "referencedColumns": [
+              "trip_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "delta",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`delta_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `trip_id` INTEGER, `landing_id` INTEGER, `resource_type` INTEGER NOT NULL, `amount` INTEGER NOT NULL, `mining` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`landing_id`) REFERENCES `landing`(`landing_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "delta_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripId",
+            "columnName": "trip_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "landingId",
+            "columnName": "landing_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "resourceType",
+            "columnName": "resource_type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mining",
+            "columnName": "mining",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "delta_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_delta_trip_id",
+            "unique": false,
+            "columnNames": [
+              "trip_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_delta_trip_id` ON `${TABLE_NAME}` (`trip_id`)"
+          },
+          {
+            "name": "index_delta_landing_id",
+            "unique": false,
+            "columnNames": [
+              "landing_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_delta_landing_id` ON `${TABLE_NAME}` (`landing_id`)"
+          },
+          {
+            "name": "index_delta_resource_type",
+            "unique": false,
+            "columnNames": [
+              "resource_type"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_delta_resource_type` ON `${TABLE_NAME}` (`resource_type`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "trip",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "trip_id"
+            ],
+            "referencedColumns": [
+              "trip_id"
+            ]
+          },
+          {
+            "table": "landing",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "landing_id"
+            ],
+            "referencedColumns": [
+              "landing_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `oauth_key` TEXT NOT NULL, `user_name` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "oauthKey",
+            "columnName": "oauth_key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "user_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "user_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_User_oauth_key",
+            "unique": true,
+            "columnNames": [
+              "oauth_key"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_User_oauth_key` ON `${TABLE_NAME}` (`oauth_key`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1650b014cad6f53fdb63b20bc6cc1823')"
+    ]
+  }
+}

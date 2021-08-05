@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.User;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -42,8 +43,10 @@ public interface UserDao {
   @Delete
   Single<Integer> delete(Collection<? extends User> Users);
 
-  @Transaction
   @Query("SELECT * FROM user WHERE user_id = :userId")
   LiveData<User> select(long userId);
+
+  @Query("SELECT * FROM user WHERE oauth_key = :oauthKey")
+  Maybe<User> selectByOauthKey(String oauthKey);
 
 }
