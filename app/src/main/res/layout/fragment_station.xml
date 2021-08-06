@@ -9,9 +9,10 @@
 
   <ImageView
     android:id="@+id/space_station_image"
-    android:layout_width="match_parent"
+    android:layout_width="0dp"
     android:layout_height="0dp"
-    app:layout_constraintBottom_toTopOf="@+id/space_station_text"
+    app:layout_constraintDimensionRatio="1:1"
+    android:scaleType="centerCrop"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -22,41 +23,44 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toBottomOf="@id/space_station_image"
-    app:layout_constraintBottom_toTopOf="@id/free_resource"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:text="@string/space_station"
     android:textSize="32sp"
     android:textAlignment="center"/>
 
-  <Button
+  <Spinner
     android:id="@+id/free_resource"
     android:layout_width="0dp"
-    android:layout_height="125dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:layout_constraintTop_toBottomOf="@id/space_station_text"
-    app:layout_constraintEnd_toStartOf="@+id/depart"
     app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/depart"
     app:layout_constraintBottom_toTopOf="@id/first_planet"
-    android:text="@string/free_resource"
-    android:textAlignment="center"/>
-  <Button
+    app:layout_constraintHorizontal_weight="1"/>
+
+  <Spinner
     android:id="@+id/first_planet"
     android:layout_width="0dp"
-    android:layout_height="125dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     app:layout_constraintTop_toBottomOf="@id/free_resource"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/depart"
-    app:layout_constraintStart_toStartOf="parent"
-    android:text="@string/free_resource"
-    android:textAlignment="center"/>
+    app:layout_constraintStart_toStartOf="@id/free_resource"
+    app:layout_constraintEnd_toEndOf="@id/free_resource"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
   <Button
     android:id="@+id/depart"
     android:layout_width="0dp"
     android:layout_height="0dp"
+    android:layout_margin="8dp"
     app:layout_constraintTop_toBottomOf="@id/space_station_text"
     app:layout_constraintStart_toEndOf="@id/free_resource"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_weight="1"
     android:text="@string/depart"
     />
 

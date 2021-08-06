@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.intergalacticUnknown.R;
 import edu.cnm.deepdive.intergalacticUnknown.databinding.FragmentHomeBinding;
+import edu.cnm.deepdive.intergalacticUnknown.viewmodel.MainViewModel;
 import org.jetbrains.annotations.NotNull;
 
 public class HomeFragment extends Fragment {
 
   private FragmentHomeBinding binding;
+
 
   @Nullable
   @Override
@@ -22,8 +24,9 @@ public class HomeFragment extends Fragment {
       @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = FragmentHomeBinding.inflate(inflater, container, false);
-    binding.startGame.setOnClickListener((v) ->
-        Navigation.findNavController(binding.getRoot()).navigate(HomeFragmentDirections.actionHomeFragmentToStationFragment()));
+    binding.startGame.setOnClickListener((v) -> Navigation.findNavController(binding.getRoot())
+        .navigate(HomeFragmentDirections.actionHomeFragmentToStationFragment()));
+    //TODO attach listener to high scores.
     return binding.getRoot();
   }
 
