@@ -66,6 +66,7 @@ public class TripRepository {
           trip.setId(id);
           return trip;
         })
+        //top
         .flatMap((updatedTrip) -> {
           List<Delta> deltas = Arrays
               .stream(ResourceType.values())
@@ -83,6 +84,7 @@ public class TripRepository {
               .insert(deltas) //Single<List<Long>>
               .map((ids) -> updatedTrip);
         })
+        //bottom
         .flatMap((updatedTrip) -> {
           Landing landing = new Landing();
           landing.setTripId(updatedTrip.getId());
@@ -93,8 +95,26 @@ public class TripRepository {
                 updatedTrip.getLandings().add(landing);
                 return landing;
               });
+        })//started here
+        .flatMap((updatedLanding) -> {
+          List<Delta> deltas = Arrays
+              .stream(PlanetType.values())
+              .map((valueType) -> {
+                Delta delta = new Delta();
+                delta.setLandingId(updatedLanding.getId());
+                delta.setResourceType(PlanetType.FROZEN.getProduces());
+                delta.setId(updatedLanding.getId());
+                delta.setTripId(updatedLanding.getTripId());
+                if(updatedLanding.getPlanetType() == initialPlanet){
+                  delta.setAmount(delta.getAmount() -1 );}
+                return delta;
+              })
+              .collect(Collectors.toList());
+          return deltaDao
+              .insert(deltas)
+              .map((ids) -> updatedLanding);
         })
-        //TODO use flat map to create and insert deltas for this landing, similar to lines 69 - 85, deltas are based on consumption amount, needs to be negative.
+        //TODO Completed - confirm with nick - use flat map to create and insert deltas for this landing, similar to lines 69 - 85, deltas are based on consumption amount change to negative when chance.
         .map((landing) -> trip)
         .subscribeOn(Schedulers.io());
 
