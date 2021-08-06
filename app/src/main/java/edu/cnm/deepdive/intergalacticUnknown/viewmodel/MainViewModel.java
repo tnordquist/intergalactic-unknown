@@ -1,39 +1,53 @@
 package edu.cnm.deepdive.intergalacticUnknown.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.OnLifecycleEvent;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Landing;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.pojo.ResourceSummary;
+import edu.cnm.deepdive.intergalacticUnknown.model.pojo.TripWithLandings;
+import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
+import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
 import edu.cnm.deepdive.intergalacticUnknown.service.DeltaRepository;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import edu.cnm.deepdive.intergalacticUnknown.service.TripRepository;
+import io.reactivex.disposables.CompositeDisposable;
+import java.util.Random;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends AndroidViewModel implements LifecycleObserver {
 
   private final DeltaRepository deltaRepository;
+  private final TripRepository tripRepository;
 
   //private final LiveData<List<ResourceSummary>> resourceSummaryList;
   private final MutableLiveData<Long> tripId;
-  private final MutableLiveData<Trip> trip;
+  private final MutableLiveData<TripWithLandings> trip;
   private final MutableLiveData<Landing> landing;
+  private final MutableLiveData<ResourceSummary> resourceSummary;
+  private final MutableLiveData<Throwable> throwable;
+  private final CompositeDisposable pending;
 
 
-
-
-  public MainViewModel(
-      @NonNull Application application) {
+  public MainViewModel(@NonNull Application application) {   // no params beyond application.
     super(application);
     deltaRepository = new DeltaRepository(application);
+    tripRepository = new TripRepository(application, new Random());
     tripId = new MutableLiveData<>();
-    trip = new MutableLiveData<>();
+    trip = new MutableLiveData<>(null);
     landing = new MutableLiveData<>();
+    resourceSummary = new MutableLiveData<>();
+    throwable = new MutableLiveData<>();
+
+    pending = new CompositeDisposable();
   }
 
-  public LiveData<Trip> getTrip(){
+  public LiveData<TripWithLandings> getTrip() {
     return trip;
   }
 
@@ -41,10 +55,38 @@ public class MainViewModel extends AndroidViewModel {
     tripId.setValue(id);
   }
 
-  public MutableLiveData<Landing> getLanding() {
+  public void startTrip(ResourceType freeResource, PlanetType initialPlanet) {
+    throwable.setValue(null);
+    pending.add(
+        tripRepository
+            .start(freeResource, initialPlanet)
+            .subscribe(
+                trip::postValue,
+                this::setThrowable
+            )
+    );
+
+  }
+
+  public LiveData<Landing> getLanding() {
     return landing;
   }
 
-  // setting up methods so we can go into main activity (controller) field notes on todd github.
+  public LiveData<ResourceSummary> getResourceSummary() {
+    return resourceSummary;
+  }
 
+  public LiveData<Throwable> getThrowable() {
+    return throwable;
+  }
+
+  // setting up methods so we can go into main activity (controller) field notes on todd github.
+  private void setThrowable(Throwable throwable) {
+    Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
+    this.throwable.postValue(throwable);
+  }
+  @OnLifecycleEvent(Event.ON_STOP)
+  private void clearPending(){
+    pending.clear();
+  }
 }

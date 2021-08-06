@@ -2,6 +2,7 @@ package edu.cnm.deepdive.intergalacticUnknown.model.pojo;
 
 import androidx.annotation.NonNull;
 import androidx.room.Relation;
+import edu.cnm.deepdive.intergalacticUnknown.model.entity.Delta;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Landing;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import java.util.List;
@@ -14,15 +15,31 @@ public class TripWithLandings extends Trip {
       parentColumn = "trip_id",
       entityColumn = "trip_id"
   )
-  private List<Landing> landings;
+  private List<LandingWithDeltas> landings;
 
   @NonNull
-  public List<Landing> getLandings() {
+  @Relation(
+      entity = Delta.class,
+      parentColumn = "trip_id",
+      entityColumn = "trip_id"
+  )
+  private List<Delta> deltas;
+  @NonNull
+  public List<LandingWithDeltas> getLandings() {
     return landings;
   }
 
   public void setLandings(
-      @NonNull List<Landing> landings) {
+      @NonNull List<LandingWithDeltas> landings) {
     this.landings = landings;
+  }
+
+  @NonNull
+  public List<Delta> getDeltas() {
+    return deltas;
+  }
+
+  public void setDeltas(@NonNull List<Delta> deltas) {
+    this.deltas = deltas;
   }
 }

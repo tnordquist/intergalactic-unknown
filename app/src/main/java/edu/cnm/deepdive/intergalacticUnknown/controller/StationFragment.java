@@ -8,17 +8,26 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import edu.cnm.deepdive.intergalacticUnknown.R;
 import edu.cnm.deepdive.intergalacticUnknown.databinding.FragmentHomeBinding;
 import edu.cnm.deepdive.intergalacticUnknown.databinding.FragmentStationBinding;
+import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
+import edu.cnm.deepdive.intergalacticUnknown.viewmodel.MainViewModel;
 
 
 public class StationFragment extends Fragment {
 
+
   private FragmentStationBinding binding;
+  private boolean navigationInProgress; //default false
+
+  private MainViewModel viewModel;
+  private Trip trip;
 
   @Nullable
   @Override
@@ -35,7 +44,8 @@ public class StationFragment extends Fragment {
     binding.firstPlanet.setAdapter(planetTypeAdapter);
 
     binding.depart.setOnClickListener((v) -> {
-      /* TODO invoke view model method to create trip */
+      navigationInProgress = true;
+      viewModel.startTrip((ResourceType) binding.freeResource.getSelectedItem(), (PlanetType) binding.firstPlanet.getSelectedItem());
       Navigation.findNavController(binding.getRoot()).navigate(StationFragmentDirections.actionStationFragmentToPlanetFragment());
     });
 
@@ -46,6 +56,15 @@ public class StationFragment extends Fragment {
   public void onViewCreated(@NonNull View view,
       @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
+    viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+    viewModel.getTrip().observe(getViewLifecycleOwner(), (trip) -> {
+      if(trip != null && !navigationInProgress){
+        //todo show results of the trip
+      }else if(!navigationInProgress){
+        //todo indicate start of new trip.
+      }
+    });
+    //TODO set up observers
   }
 
 }

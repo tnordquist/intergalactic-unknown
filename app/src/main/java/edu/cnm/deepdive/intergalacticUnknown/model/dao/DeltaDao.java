@@ -51,7 +51,7 @@ public interface DeltaDao {
       + "left join delta as d on d.trip_id = t.trip_id or d.landing_id = ln.landing_id "
       + "where t.trip_id = :tripId "
       + "group by d.resource_type")
-  LiveData<List<ResourceSummary>> getResourceSummary(long tripId);
+  Single<List<ResourceSummary>> getResourceSummary(long tripId);
 
   //add two more queries, one that returns a list of deltas for given trip (live data), one that returns a list of deltas for a given landing. delta has trip id and landing id.
 
