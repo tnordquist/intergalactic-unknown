@@ -33,6 +33,8 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   private final MutableLiveData<Throwable> throwable;
   private final CompositeDisposable pending;
 
+  private final MutableLiveData<Boolean> mineAttempt;
+
 
   public MainViewModel(@NonNull Application application) {   // no params beyond application.
     super(application);
@@ -43,8 +45,10 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     landing = new MutableLiveData<>();
     resourceSummary = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
-
     pending = new CompositeDisposable();
+    mineAttempt = new MutableLiveData<>();
+    //trying to add planet type into planet fragment, should use landing/
+
   }
 
   public LiveData<TripWithLandings> getTrip() {
@@ -69,6 +73,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   }
 
   public LiveData<Landing> getLanding() {
+
     return landing;
   }
 
@@ -80,7 +85,7 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
     return throwable;
   }
 
-  // setting up methods so we can go into main activity (controller) field notes on todd github.
+
   private void setThrowable(Throwable throwable) {
     Log.e(getClass().getSimpleName(), throwable.getMessage(), throwable);
     this.throwable.postValue(throwable);
@@ -88,5 +93,11 @@ public class MainViewModel extends AndroidViewModel implements LifecycleObserver
   @OnLifecycleEvent(Event.ON_STOP)
   private void clearPending(){
     pending.clear();
+  }
+
+
+  public MutableLiveData<Boolean> getMineAttempt() {
+
+    return mineAttempt;
   }
 }

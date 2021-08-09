@@ -42,7 +42,8 @@ public class DeltaRepository {
 
 
   LiveData<List<ResourceSummary>> getResourceSummary(long tripId){
-    return deltaDao.getResourceSummary(tripId);
+
+    return deltaDao.getResourceSummaryLiveData(tripId);
   }
 
 }

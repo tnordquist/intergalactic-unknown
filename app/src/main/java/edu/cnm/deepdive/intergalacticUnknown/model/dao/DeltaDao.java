@@ -53,6 +53,23 @@ public interface DeltaDao {
       + "group by d.resource_type")
   Single<List<ResourceSummary>> getResourceSummary(long tripId);
 
+  //todo everything below is new
+
+  @Transaction
+  @Query("select d.resource_type, sum(d.amount) as amount "
+      + "from trip as t "
+      + "left join landing as ln on ln.trip_id = t.trip_id "
+      + "left join delta as d on d.trip_id = t.trip_id or d.landing_id = ln.landing_id "
+      + "where t.trip_id = :tripId "
+      + "group by d.resource_type")
+  LiveData<List<ResourceSummary>> getResourceSummaryLiveData(long tripId);
+
+
+
+
+
+  //originally single
+
   //add two more queries, one that returns a list of deltas for given trip (live data), one that returns a list of deltas for a given landing. delta has trip id and landing id.
 
 }

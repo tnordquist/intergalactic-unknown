@@ -25,7 +25,6 @@ public class StationFragment extends Fragment {
 
   private FragmentStationBinding binding;
   private boolean navigationInProgress; //default false
-
   private MainViewModel viewModel;
   private Trip trip;
 
@@ -44,10 +43,14 @@ public class StationFragment extends Fragment {
     binding.firstPlanet.setAdapter(planetTypeAdapter);
 
     binding.depart.setOnClickListener((v) -> {
+
       navigationInProgress = true;
       viewModel.startTrip((ResourceType) binding.freeResource.getSelectedItem(), (PlanetType) binding.firstPlanet.getSelectedItem());
       Navigation.findNavController(binding.getRoot()).navigate(StationFragmentDirections.actionStationFragmentToPlanetFragment());
     });
+
+
+
 
     return binding.getRoot();
   }
