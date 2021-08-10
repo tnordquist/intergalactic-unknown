@@ -1,0 +1,8 @@
+edu.cnm.deepdive.intergalacticUnknown
+edu.cnm.deepdive.intergalacticUnknown.controller
+edu.cnm.deepdive.intergalacticUnknown.model.dao
+edu.cnm.deepdive.intergalacticUnknown.model.entity
+edu.cnm.deepdive.intergalacticUnknown.model.pojo
+edu.cnm.deepdive.intergalacticUnknown.model.types
+edu.cnm.deepdive.intergalacticUnknown.service
+edu.cnm.deepdive.intergalacticUnknown.viewmodel

@@ -2,6 +2,7 @@ package edu.cnm.deepdive.intergalacticUnknown;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
+import edu.cnm.deepdive.intergalacticUnknown.service.GoogleSignInService;
 import edu.cnm.deepdive.intergalacticUnknown.service.IntergalacticUnknownDatabase;
 import io.reactivex.schedulers.Schedulers;
 
@@ -18,6 +19,7 @@ public class IntergalacticUnknownApplication extends Application {
         .delete()
         .subscribeOn(Schedulers.io())
         .subscribe();
+    GoogleSignInService.setContext(this);
     Stetho.initializeWithDefaults(this);
   }
 

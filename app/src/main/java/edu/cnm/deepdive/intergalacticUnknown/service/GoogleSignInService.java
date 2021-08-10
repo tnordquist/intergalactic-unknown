@@ -11,15 +11,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import edu.cnm.deepdive.intergalacticUnknown.BuildConfig;
+import edu.cnm.deepdive.intergalacticUnknown.model.entity.User;
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 public class GoogleSignInService {
+
+  private static final String BEARER_TOKEN_FORMAT = "Bearer %s";
 
   private static Application context;
 
   private final GoogleSignInClient client;
 
   private GoogleSignInAccount account;
+  private final TripRepository tripRepository;
+
+
 
   private GoogleSignInService() {
     GoogleSignInOptions options = new GoogleSignInOptions.Builder()
@@ -28,6 +35,7 @@ public class GoogleSignInService {
         .requestProfile()
         .build();
     client = GoogleSignIn.getClient(context, options);
+    tripRepository = new TripRepository(context);
   }
 
   public static void setContext(Application context) {
@@ -67,6 +75,12 @@ public class GoogleSignInService {
     }
     return task;
   }
+  public Single<User> refreshUser() {
+    return refresh()
+        .observeOn(Schedulers.io())
+        .flatMap((account) ->
+            tripRepository.insertUser(account.getId()));
+  }
 
   public Task<Void> signOut() {
     return client.signOut()
@@ -76,9 +90,10 @@ public class GoogleSignInService {
   private void setAccount(GoogleSignInAccount account) {
     this.account = account;
     if(account != null) {
-      Log.d(getClass().getSimpleName(), account.getIdToken());
+    //  Log.d("Google Sign In Service", account.getIdToken());
     }
   }
+
 
   private static class InstanceHolder {
 

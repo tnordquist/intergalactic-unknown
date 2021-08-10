@@ -14,6 +14,7 @@
   <string name="ship_status">View Ship Status</string>
   <string name="next_planet">Next Planet / Space Station</string>
   <string name="mine_planet">Mine Planet</string>
+  <string name="login_failure_message">Unable to sign in with the provided credentials.</string>
   <string-array name="scorched_names">
     <item>Tamale</item>
     <item>Green Chile</item>

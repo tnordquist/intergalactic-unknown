@@ -21,9 +21,9 @@ public class User {
   @ColumnInfo (name = "oauth_key")
   private String oauthKey;
 
-  @NonNull
-  @ColumnInfo (name = "user_name")
-  private String userName;
+//  @NonNull
+//  @ColumnInfo (name = "user_name")
+//  private String userName;
 
   public long getId() {
     return id;
@@ -42,12 +42,12 @@ public class User {
     this.oauthKey = oauthKey;
   }
 
-  @NonNull
-  public String getUserName() {
-    return userName;
-  }
-
-  public void setUserName(@NonNull String userName) {
-    this.userName = userName;
-  }
+//  @NonNull
+//  public String getUserName() {
+//    return userName;
+//  }
+//
+//  public void setUserName(@NonNull String userName) {
+//    this.userName = userName;
+//  }
 }

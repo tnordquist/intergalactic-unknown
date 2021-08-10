@@ -22,7 +22,6 @@ import java.util.Date;
         )
     }
 )
-
 public class Trip {
 
   @PrimaryKey(autoGenerate = true)
@@ -43,6 +42,9 @@ public class Trip {
 
   @ColumnInfo(index = true, name = "user_id")
   private long userId;
+
+  @ColumnInfo(name = "random_event")
+  private boolean randomEvent;
 
 
   public long getId() {
@@ -90,4 +92,11 @@ public class Trip {
     this.userId = userId;
   }
 
+  public boolean isRandomEvent() {
+    return randomEvent;
+  }
+
+  public void setRandomEvent(boolean randomEvent) {
+    this.randomEvent = randomEvent;
+  }
 }

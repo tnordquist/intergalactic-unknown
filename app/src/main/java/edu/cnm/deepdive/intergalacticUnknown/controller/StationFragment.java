@@ -17,6 +17,7 @@ import edu.cnm.deepdive.intergalacticUnknown.databinding.FragmentStationBinding;
 import edu.cnm.deepdive.intergalacticUnknown.model.entity.Trip;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.PlanetType;
 import edu.cnm.deepdive.intergalacticUnknown.model.types.ResourceType;
+import edu.cnm.deepdive.intergalacticUnknown.service.TripRepository;
 import edu.cnm.deepdive.intergalacticUnknown.viewmodel.MainViewModel;
 
 
@@ -46,7 +47,6 @@ public class StationFragment extends Fragment {
 
       navigationInProgress = true;
       viewModel.startTrip((ResourceType) binding.freeResource.getSelectedItem(), (PlanetType) binding.firstPlanet.getSelectedItem());
-      Navigation.findNavController(binding.getRoot()).navigate(StationFragmentDirections.actionStationFragmentToPlanetFragment());
     });
 
 
@@ -61,12 +61,31 @@ public class StationFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     viewModel.getTrip().observe(getViewLifecycleOwner(), (trip) -> {
-      if(trip != null && !navigationInProgress){
-        //todo show results of the trip
-      }else if(!navigationInProgress){
+      if (trip != null) {
+        if (!navigationInProgress) {
+
+          //todo this is where we come back in the middle of a trip.
+        } else {
+          //todo indicate start of new trip.
+          if(trip.isRandomEvent()) {
+            Navigation.findNavController(binding.getRoot())
+                .navigate(StationFragmentDirections.actionStationFragmentToAcknowledgmentFragment());
+          } else {
+            Navigation.findNavController(binding.getRoot())
+                .navigate(StationFragmentDirections.actionStationFragmentToPlanetFragment());
+          }
+        }
+      } else if (!navigationInProgress) {
         //todo indicate start of new trip.
+
       }
     });
+//    viewModel.getRandomEventAcknowledged().observe(getViewLifecycleOwner(), (acknowledged) -> {
+//      if(acknowledged != null) {
+//        Navigation.findNavController(binding.getRoot())
+//            .navigate(StationFragmentDirections.actionStationFragmentToPlanetFragment());
+//      }
+//    });
     //TODO set up observers
   }
 

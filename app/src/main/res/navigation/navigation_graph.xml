@@ -53,11 +53,22 @@
 
 
 
+
+
     <action
       android:id="@+id/action_station_fragment_to_planet_fragment"
       app:destination="@id/planet_fragment">
 
     </action>
+    <action
+      android:id="@+id/action_station_fragment_to_acknowledgment_fragment"
+      app:destination="@id/acknowledgment_fragment"/>
   </fragment>
+
+  <dialog
+    android:id="@+id/acknowledgment_fragment"
+    android:name="edu.cnm.deepdive.intergalacticUnknown.controller.RandomEventFragment">
+
+  </dialog>
 
 </navigation>
