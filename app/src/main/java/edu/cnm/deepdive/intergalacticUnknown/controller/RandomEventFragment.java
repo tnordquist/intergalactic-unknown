@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -25,8 +27,8 @@ public class RandomEventFragment extends DialogFragment {
   @Override
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
     binding = FragmentRandomEventBinding.inflate(LayoutInflater.from(getContext()), null, false);
-    dialog = new AlertDialog.Builder(getContext())
-        .setTitle("Random Event")
+    dialog = new Builder(getContext())
+        .setTitle(R.string.random_event_title)
         .setView(binding.getRoot())
         .setNeutralButton(android.R.string.ok, (d,w) ->
             Navigation.findNavController(getActivity(), R.id.nav_host_fragment).navigate(R.id.planet_fragment))
@@ -46,6 +48,9 @@ public class RandomEventFragment extends DialogFragment {
     super.onViewCreated(view, savedInstanceState);
     viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
     viewModel.getTrip().observe(getViewLifecycleOwner(), (trip) -> {
+      binding.newPlanet.setText(trip.getPreferredDestination().toString());
+      binding.newResource.setText(trip.getAugmentedResource().toString());
+
       //todo set text in binding objects to values of trip fields / properties. (put in planet fragment as well)
     });
   }

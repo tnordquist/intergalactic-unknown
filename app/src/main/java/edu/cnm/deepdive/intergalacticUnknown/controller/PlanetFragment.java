@@ -57,7 +57,11 @@ public class PlanetFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
 
     viewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
-    viewModel.getTrip();
+    viewModel.getTrip().observe(getViewLifecycleOwner(), (trip) -> {
+      if (trip.getId() % 3 == 0) {
+
+      }
+    });
   }
 
 }
