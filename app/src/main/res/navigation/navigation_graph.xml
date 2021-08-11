@@ -6,10 +6,9 @@
 
   <fragment
     android:id="@+id/home_fragment"
-    android:name="edu.cnm.deepdive.intergalacticUnknown.controller.HomeFragment"
+    android:name="edu.cnm.deepdive.intergalacticunknown.controller.HomeFragment"
     android:label="fragment_home"
     tools:layout="@layout/fragment_home">
-
 
 
     <action
@@ -19,16 +18,20 @@
 
   <fragment
     android:id="@+id/planet_fragment"
-    android:name="edu.cnm.deepdive.intergalacticUnknown.controller.PlanetFragment"
+    android:name="edu.cnm.deepdive.intergalacticunknown.controller.PlanetFragment"
     android:label="fragment_planet"
     tools:layout="@layout/fragment_planet">
 
-
+    <argument
+      android:name="planet_type"
+      app:argType="edu.cnm.deepdive.intergalacticunknown.model.types.PlanetType"/>
 
     <action
       android:id="@+id/action_planet_fragment_self"
       app:destination="@id/planet_fragment">
-
+      <argument
+        android:name="planet_type"
+        app:argType="edu.cnm.deepdive.intergalacticunknown.model.types.PlanetType"/>
     </action>
 
     <action
@@ -43,22 +46,24 @@
       app:destination="@id/station_fragment">
 
     </action>
+    <!--    <action-->
+    <!--      android:id="@+id/action_planet_fragment_to_view_resources_fragment"-->
+    <!--      app:destination="@id/view_resources_fragment"/>-->
   </fragment>
 
   <fragment
     android:id="@+id/station_fragment"
-    android:name="edu.cnm.deepdive.intergalacticUnknown.controller.StationFragment"
+    android:name="edu.cnm.deepdive.intergalacticunknown.controller.StationFragment"
     android:label="fragment_station"
     tools:layout="@layout/fragment_station">
-
-
-
 
 
     <action
       android:id="@+id/action_station_fragment_to_planet_fragment"
       app:destination="@id/planet_fragment">
-
+      <argument
+        android:name="planet_type"
+        app:argType="edu.cnm.deepdive.intergalacticunknown.model.types.PlanetType"/>
     </action>
     <action
       android:id="@+id/action_station_fragment_to_acknowledgment_fragment"
@@ -67,8 +72,22 @@
 
   <dialog
     android:id="@+id/acknowledgment_fragment"
-    android:name="edu.cnm.deepdive.intergalacticUnknown.controller.RandomEventFragment">
+    android:name="edu.cnm.deepdive.intergalacticunknown.controller.RandomEventFragment">
+    <action
+      android:id="@+id/action_acknowledgment_fragment_to_planet_fragment"
+      app:destination="@id/planet_fragment">
 
+      <argument
+        android:name="planet_type"
+        app:argType="edu.cnm.deepdive.intergalacticunknown.model.types.PlanetType"/>
+
+    </action>
   </dialog>
+
+  <!--  <dialog-->
+  <!--    android:id="@+id/view_resources_fragment"-->
+  <!--    android:name="edu.cnm.deepdive.intergalacticunknown.controller.ViewResourcesFragment">-->
+
+  <!--  </dialog>-->
 
 </navigation>

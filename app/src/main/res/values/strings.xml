@@ -16,6 +16,7 @@
   <string name="mine_planet">Mine Planet</string>
   <string name="login_failure_message">Unable to sign in with the provided credentials.</string>
   <string name="random_event_title"> Random Event! Your selections have randomized:</string>
+  <string name="resource_summary">Resource Summary</string>
   <string-array name="scorched_names">
     <item>Tamale</item>
     <item>Green Chile</item>

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "a2946866cae93aa2e40d2eaa68588b04",
+    "identityHash": "c7ce0fd6de5d17d02685badce43ebcaa",
     "entities": [
       {
         "tableName": "trip",
@@ -101,7 +101,7 @@
       },
       {
         "tableName": "landing",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`landing_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `landing_order` INTEGER NOT NULL, `planet_type` INTEGER NOT NULL, `planet_name` TEXT NOT NULL, `trip_id` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`landing_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER, `planet_type` INTEGER NOT NULL, `planet_name` TEXT NOT NULL, `trip_id` INTEGER NOT NULL, FOREIGN KEY(`trip_id`) REFERENCES `trip`(`trip_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -110,10 +110,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "order",
-            "columnName": "landing_order",
+            "fieldPath": "created",
+            "columnName": "created",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "planetType",
@@ -141,15 +141,6 @@
           "autoGenerate": true
         },
         "indices": [
-          {
-            "name": "index_landing_trip_id_landing_order",
-            "unique": true,
-            "columnNames": [
-              "trip_id",
-              "landing_order"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_landing_trip_id_landing_order` ON `${TABLE_NAME}` (`trip_id`, `landing_order`)"
-          },
           {
             "name": "index_landing_planet_type",
             "unique": false,
@@ -318,7 +309,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a2946866cae93aa2e40d2eaa68588b04')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c7ce0fd6de5d17d02685badce43ebcaa')"
     ]
   }
 }
