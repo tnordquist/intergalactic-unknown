@@ -2,7 +2,7 @@
 title: License
 subtitle: "License"
 menu: License
-order: 60
+order: 80
 ---
 
 
