@@ -1,3 +1,35 @@
 <resources>
-  <string name="app_name">Galactic Unknown</string>
+  <string name="app_name">Intergalactic Unknown</string>
+
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="start_game">Start Game</string>
+  <string name="high_scores">High Scores</string>
+  <string name="space_station">Space Station</string>
+  <string name="free_resource">Select Free Resource</string>
+  <string name="depart">Depart</string>
+  <string name="planet_name">Planet Name</string>
+  <string name="resource_needed">Resource Needed</string>
+  <string name="resource_inventory">Resources Available</string>
+  <string name="damage_taken">Damage Taken</string>
+  <string name="ship_status">View Ship Status</string>
+  <string name="next_planet">Next Planet / Space Station</string>
+  <string name="mine_planet">Mine Planet</string>
+  <string name="login_failure_message">Unable to sign in with the provided credentials.</string>
+  <string name="random_event_title"> Random Event! Your selections have randomized:</string>
+  <string name="resource_summary">Resource Summary</string>
+  <string-array name="scorched_names">
+    <item>Tamale</item>
+    <item>Green Chile</item>
+  </string-array>
+  <string-array name="volcanic_names">
+    <item>Crackatoa</item>
+    <item>Summer Day</item>
+  </string-array>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string-array name="frozen_names">
+    <item>Popsicle</item>
+    <item>Ice Cube</item>
+  </string-array>
+
+
 </resources>
